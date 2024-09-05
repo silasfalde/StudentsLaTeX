@@ -46,7 +46,7 @@
 }
 
 % Plots
-\pgfplotsset{width=\textwidth,compat=1.9}
+\pgfplotsset{width=0.9\textwidth,compat=1.9}
 \usepgfplotslibrary{external}
 % \tikzexternalize
 
