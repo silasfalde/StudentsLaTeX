@@ -1,0 +1,58 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{assignment}[2019/03/19]
+\LoadClass[12pt, letterpaper]{article}
+
+\RequirePackage{
+    geometry,
+    amsmath,
+    xcolor,
+    enumitem,
+    siunitx, 
+    pgfplots
+}
+
+% Names
+\renewcommand{\title}[1]{\gdef\@title{#1}}
+\renewcommand{\author}[1]{\gdef\@author{#1}}
+\newcommand{\professor}[1]{ \newcommand{\professorloc}{#1} }
+\newcommand{\class}[1]{ \newcommand{\classlocal}{#1} }
+\author{Silas Falde}
+
+% Options
+\input{subj_options.tex}
+\input{class_options.tex}
+\ProcessOptions\relax
+
+% Option Commands
+\input{subj_commands.tex}
+\input{class_commands.tex}
+
+% Math Commands
+\input{math_commands.tex}
+
+% Margins
+\geometry{left=1in,right=1in,top=1in,bottom=1in}
+
+% Exercises
+\newenvironment{exercises}{
+    \begin{enumerate}[label = \boxed{\bf\arabic*}]
+}{
+    \end{enumerate}
+}
+\newenvironment{parts}{
+    \begin{enumerate}[label = \alph*)]
+}{
+    \end{enumerate}
+}
+
+% Plots
+\pgfplotsset{width=\textwidth,compat=1.9}
+\usepgfplotslibrary{external}
+% \tikzexternalize
+
+% Highlight
+\newcommand{\highlight}[1]{
+    \colorbox{yellow!60}{#1}
+}
+
+\endinput
