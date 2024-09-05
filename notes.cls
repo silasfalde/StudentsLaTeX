@@ -42,8 +42,7 @@
 \newtheorem{law}{Law}
 \theoremstyle{remark}
 
-% Environment
-
+% Note Environment
 \newenvironment{note}{
   \begin{tcolorbox}[colback=black!5!white,colframe=black,title={\centering{Note}}]
   }{
@@ -54,12 +53,13 @@
 \titleformat{\section}
   {\normalfont\large\bfseries}{\thesection}{1em}{}
   [\titlerule]
-\titleformat{\subsection}[runin]{\normalfont\normalsize\bfseries}{\thesubsection}{10pt}{}[.]
-% \titlespacing{\subsection}{12pc}{1.5ex plus .1ex minus .2ex}{1pc}
+\titleformat{\subsection}[runin]
+  {\normalfont\normalsize\bfseries}{\thesubsection}
+  {10pt}{}
+  [.]
 
 % Paragraphs
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1em}
 
 % Geometry
 \geometry{margin=1in}
