@@ -33,6 +33,11 @@
 % Margins
 \geometry{left=1in,right=1in,top=1in,bottom=1in}
 
+% Sections
+% \titleformat{\section}
+%   {\normalfont\large\bfseries}{\thesection}{1em}{}
+%   [\titlerule]
+
 % Exercises
 \newenvironment{exercises}{
     \begin{enumerate}[label = \boxed{\bf\arabic*}]
@@ -46,7 +51,7 @@
 }
 
 % Plots
-\pgfplotsset{width=0.9\textwidth,compat=1.9}
+\pgfplotsset{width=0.8\textwidth,compat=1.9}
 \usepgfplotslibrary{external}
 % \tikzexternalize
 

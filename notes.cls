@@ -7,7 +7,6 @@
   xcolor,
   amsmath,
   amsthm,
-  pgfplots,
   tcolorbox,
   siunitx
 }
@@ -81,9 +80,5 @@
   
   {\large\today\par}
 }}
-
-\pgfplotsset{width=10cm, compat=1.18}
-% \usepgfplotslibrary{external}
-% \tikzexternalize
 
 \endinput
