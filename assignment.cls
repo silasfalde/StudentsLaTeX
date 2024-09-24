@@ -11,6 +11,8 @@
     pgfplots
 }
 
+\usepgfplotslibrary{fillbetween}
+
 % Names
 \renewcommand{\title}[1]{\gdef\@title{#1}}
 \renewcommand{\author}[1]{\gdef\@author{#1}}
@@ -54,10 +56,5 @@
 \pgfplotsset{width=0.8\textwidth,compat=1.9}
 \usepgfplotslibrary{external}
 % \tikzexternalize
-
-% Highlight
-\newcommand{\highlight}[1]{
-    \colorbox{yellow!60}{#1}
-}
 
 \endinput
