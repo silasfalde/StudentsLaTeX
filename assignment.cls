@@ -8,7 +8,8 @@
     xcolor,
     enumitem,
     siunitx, 
-    pgfplots
+    pgfplots, 
+    booktabs
 }
 
 \usepgfplotslibrary{fillbetween}
