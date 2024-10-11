@@ -42,16 +42,22 @@
 %   [\titlerule]
 
 % Exercises
-\newenvironment{exercises}{
-    \begin{enumerate}[label = \boxed{\bf\arabic*}]
-}{
-    \end{enumerate}
-}
-\newenvironment{parts}{
-    \begin{enumerate}[label = \alph*)]
-}{
-    \end{enumerate}
-}
+\newlist{exercises}{enumerate}{2}
+% \renewcommand{\labelenumi}{Exercise \arabic{enumi}}
+\setlist[exercises,1]{label=\boxed{\arabic{exercisesi}}, leftmargin=\parindent,
+rightmargin=10pt}
+\setlist[exercises,2]{label=\alph{exercisesii}), leftmargin=\parindent, rightmargin=10pt}
+
+% \newenvironment{exercises}{
+%     \begin{enumerate}[label = \boxed{\bf\arabic*}]
+% }{
+%     \end{enumerate}
+% }
+% \newenvironment{parts}{
+%     \begin{enumerate}[label = \alph*)]
+% }{
+%     \end{enumerate}
+% }
 
 % Plots
 \pgfplotsset{width=0.8\textwidth,compat=1.9}
