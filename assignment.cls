@@ -10,7 +10,9 @@
     siunitx, 
     pgfplots, 
     booktabs, 
-    etoolbox
+    etoolbox, 
+    xparse, 
+    mdframed
 }
 
 \usepgfplotslibrary{fillbetween}
@@ -46,5 +48,13 @@
 \newlist{exercises}{enumerate}{2}
 \setlist[exercises,1]{label=\boxed{\arabic{exercisesi}}, leftmargin=0pt}
 \setlist[exercises,2]{label=\alph{exercisesii}), leftmargin=\parindent}
+
+% Problem Statement Environment
+\newenvironment{problem}[1][Problem]{
+  \begin{mdframed}
+    \textbf{#1}
+}{
+  \end{mdframed}
+}
 
 \endinput
