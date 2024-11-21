@@ -1,5 +1,5 @@
 \ProvidesClass{notes}
-\LoadClass[12pt]{report}
+\LoadClass[10pt]{report}
 \RequirePackage{
   graphicx,
   geometry,
@@ -42,6 +42,7 @@
 \theoremstyle{remark}
 
 % Note Environment
+
 \newenvironment{note}{
   \begin{tcolorbox}[colback=black!5!white,colframe=black,title={\centering{Note}}]
   }{

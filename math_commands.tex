@@ -6,12 +6,12 @@
 \newcommand{\indefint}[2]{\int{#1}{\hspace{2pt}\diff{#2}}}
 \newcommand{\set}[1]{\left\{ #1 \right\}}
 \newcommand{\magnitude}[1]{\left|#1\right|}
-\newcommand{\eval}[3]{\left(\left.#3\right)\right\rvert_{#1}^{#2}}
+\newcommand{\eval}[4]{\left(\left.#3\right)\right\rvert_{#4 = #1}^{#4 = #2}}
 \newcommand{\bigo}[1]{{\rm O}(#1)}
 \newcommand{\bigtheta}[1]{{\Theta}(#1)}
 \newcommand{\bigomega}[1]{{\Omega}(#1)}
 \renewcommand{\not}[1]{\overline{#1}}
-\newcommand{\prob}[1]{{\text{P}} \left(#1\right)}
+\newcommand{\prob}[1]{{\text{P}} \hspace{-2pt} \left(#1\right)}
 \newcommand{\union}[2]{#1 \cup #2}
 \newcommand{\given}[2]{\left.#1\hspace{1pt}\right\rvert#2}
 \newcommand{\intersec}[2]{#1 \cap #2}
@@ -22,17 +22,18 @@
 \newcommand{\khat}{\hat{k}}
 \newcommand{\smean}[1]{\overline{#1}}
 \newcommand{\pmean}[1]{\mu_{#1}}
-\newcommand{\pvar}[1]{\sigma_{#1}^2}
-\newcommand{\svar}[1]{s_{#1}^2}
-\newcommand{\psd}[1]{\sigma_{#1}}
-\newcommand{\ssd}[1]{s_{#1}}
-\newcommand{\cov}[2]{{\rm Cov}(#1, #2)}
+\newcommand{\var}[1]{\mathrm{Var}\hspace{-2pt}\left(#1\right)}
+\newcommand{\sd}[1]{\mathrm{SD}\hspace{-2pt}\left(#1\right)}
+\newcommand{\expect}[1]{\mathrm{E}\hspace{-2pt}\left(#1\right)}
+\newcommand{\pdf}[1]{\mathrm{PDF}\hspace{-2pt}\left(#1\right)}
+\newcommand{\cdf}[1]{\mathrm{CDF}\hspace{-2pt}\left(#1\right)}
+\newcommand{\cov}[2]{{\mathrm{Cov}}(#1, #2)}
 \newcommand{\binomial}[2]{{\rm Bin}\left(#1, #2\right)}
-\newcommand{\normal}[2]{{\rm N}\left(#1, #2\right)}
+\newcommand{\bernoulli}[1]{{\rm Bernoulli}\left(#1\right)}
+\newcommand{\normal}[2]{{\rm Normal}\left(#1, #2\right)}
 \newcommand{\poisson}[1]{{\rm Poisson}\left(#1\right)}
 \newcommand{\exponential}[1]{{\rm Exp}\left(#1\right)}
-\renewcommand{\sin}[1]{\text{sin}\hspace{-2pt}\left(#1\right)}
-\renewcommand{\cos}[1]{\text{cos}\hspace{-2pt}\left(#1\right)}
-\renewcommand{\arccos}[1]{\text{arccos}\hspace{-2pt}\left(#1\right)}
-\renewcommand{\arcsin}[1]{\text{arcsin}\hspace{-2pt}\left(#1\right)}
 \newcommand{\mse}[1]{\mathrm{MSE}_{#1}}
+\newcommand{\mle}[1]{\mathrm{MLE}\left(#1\right)}
+\newcommand{\spaceand}{\qquad\text{and}\qquad}
+\renewcommand{\bar}[1]{\overline{#1}}

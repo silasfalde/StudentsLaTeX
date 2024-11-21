@@ -1,28 +1,25 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{assignment}[2019/03/19]
-\LoadClass[12pt, letterpaper]{article}
+\ProvidesClass{assignment}[2024/11/14]
+\LoadClass[10pt, letterpaper]{article}
 
 \RequirePackage{
-    geometry,
-    amsmath,
-    xcolor,
-    enumitem,
-    siunitx, 
-    pgfplots, 
-    booktabs, 
-    etoolbox, 
-    xparse, 
-    mdframed
+  geometry,
+  amsmath,
+  siunitx, 
+  pgfplots, 
+  booktabs, 
+  mdframed, 
+  tcolorbox,
+  wrapfig,
 }
 
 \usepgfplotslibrary{fillbetween}
 
 % Names
-\renewcommand{\title}[1]{\gdef\@title{#1}}
-\renewcommand{\author}[1]{\gdef\@author{#1}}
-\newcommand{\professor}[1]{ \newcommand{\professorloc}{#1} }
-\newcommand{\class}[1]{ \newcommand{\classlocal}{#1} }
+\newcommand{\professor}[1]{\gdef\@professor{#1}}
+\newcommand{\class}[1]{\gdef\@class{#1}}
 \author{Silas Falde}
+\date{\today}
 
 % Options
 \input{subj_options.tex}
@@ -36,25 +33,61 @@
 % Math Commands
 \input{math_commands.tex}
 
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+    \centering \vspace*{2cm}
+    {\Huge \@title \par}
+    {\huge \@class \par}
+    \vfill
+    {\Large \@author \par}
+    {\large \@date \par}
+    \vspace*{2cm}
+    \thispagestyle{empty}
+  \thispagestyle{empty}
+  \end{titlepage} 
+  \setcounter{page}{1} 
+  \pagenumbering{arabic}
+}
+
 % Margins
 \geometry{left=1in,right=1in,top=1in,bottom=1in}
+
+% Paragraphs
+\setlength{\parindent}{0in}
+\setlength{\parskip}{1em}
 
 % Plots
 \pgfplotsset{width=0.8\textwidth,compat=1.9}
 \usepgfplotslibrary{external}
 % \tikzexternalize
 
-% Exercises
-\newlist{exercises}{enumerate}{2}
-\setlist[exercises,1]{label=\boxed{\arabic{exercisesi}}, leftmargin=0pt}
-\setlist[exercises,2]{label=\alph{exercisesii}), leftmargin=\parindent}
-
-% Problem Statement Environment
-\newenvironment{problem}[1][Problem]{
+% Exercise
+\newcounter{exercise}
+\newcommand{\exercise}[2]{
+  \newpage
+  \refstepcounter{exercise}
+  \vspace{1em}
   \begin{mdframed}
-    \textbf{#1}
-}{
+    \boxed{\theexercise} #1
   \end{mdframed}
+  \vspace{10pt}
+  #2
+}
+
+% Parts
+\renewcommand{\part}[3]{
+  \hrule\nopagebreak\vspace{-8pt}\nopagebreak
+  #1) #2 \nopagebreak\\
+  \nopagebreak\vspace{-8pt}\hrule
+  #3
+  \vspace{1.5em}
+}
+
+% Note
+\newenvironment{note}{
+  \begin{tcolorbox}[colback=black!5!white,colframe=black,title={\centering{Note}}]
+  }{
+  \end{tcolorbox}
 }
 
 \endinput
