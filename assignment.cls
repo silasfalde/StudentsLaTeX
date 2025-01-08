@@ -61,26 +61,23 @@
 \usepgfplotslibrary{external}
 % \tikzexternalize
 
-% Exercise
-\newcounter{exercise}
-\newcommand{\exercise}[2]{
+\renewcommand{\section}[1]{
   \newpage
-  \refstepcounter{exercise}
+  \refstepcounter{section}
   \vspace{1em}
   \begin{mdframed}
-    \boxed{\theexercise} #1
+    \boxed{\thesection} #1
   \end{mdframed}
   \vspace{10pt}
-  #2
 }
 
-% Parts
-\renewcommand{\part}[3]{
+\renewcommand{\subsection}[1]{
+  \refstepcounter{subsection}
+  \renewcommand{\thesubsection}{\alph{subsection}}
+  \vspace{2em}
   \hrule\nopagebreak\vspace{-8pt}\nopagebreak
-  #1) #2 \nopagebreak\\
+  \thesubsection) #1 \nopagebreak\\
   \nopagebreak\vspace{-8pt}\hrule
-  #3
-  \vspace{1.5em}
 }
 
 % Note

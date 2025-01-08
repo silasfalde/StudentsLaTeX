@@ -1,5 +1,6 @@
 \ProvidesClass{notes}
 \LoadClass[10pt]{report}
+
 \RequirePackage{
   graphicx,
   geometry,
@@ -11,6 +12,8 @@
   siunitx
 }
 
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+
 % Names
 \renewcommand{\title}[1]{\gdef\@title{#1}}
 \renewcommand{\author}[1]{\gdef\@author{#1}}
@@ -20,17 +23,15 @@
 \date{\today}
 
 % Options
-\input{subj_options.tex}
-\input{class_options.tex}
+\input{subj-options.tex}
+\input{class-options.tex}
 \ProcessOptions\relax
 
-% Option Commands
-\input{subj_commands.tex}
-\input{class_commands.tex}
+% Packages/Commands
+\input{subj-imports.tex}
+\input{class-commands.tex}
 \title{\classlocal \ Notes}
-
-% Math Commands
-\input{math_commands.tex}
+\input{math-commands.tex}
 
 % Theorems
 \theoremstyle{definition}
@@ -64,6 +65,11 @@
 % Geometry
 \geometry{margin=1in}
 
+% \if@concise
+%   \geometry{margin=0.5in}
+% \fi
+
+% Title
 \renewcommand{\maketitle}{{
   \centering
   \vspace*{1cm} % Adds vertical space
@@ -80,6 +86,7 @@
   \vfill
   
   {\large\today\par}
+  \newpage
 }}
 
 \endinput
