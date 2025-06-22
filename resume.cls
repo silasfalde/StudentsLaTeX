@@ -1,7 +1,6 @@
 \ProvidesClass{resume}[2024/12/25 Resume class]
 \LoadClass[10pt]{article}
 
-
 \RequirePackage{
 	parskip,
 	array,
@@ -23,8 +22,8 @@
 \geometry{margin=0.75in}
 
 \if@compact
-	\setlength{\parskip}{0.5em}
-	\geometry{margin=0.5in, top=0.4in}
+	\setlength{\parskip}{0.55em}
+	\geometry{margin=0.5in}
 	\pagenumbering{gobble}
 \fi
 
@@ -67,7 +66,6 @@
 \smallskip
 }
 
-\address{1300 S University Ave \\ 503-A \\ Ann Arbor MI, 48104}
 \address{(517) 539-1532 \\ sfalde@umich.edu}
 
 
@@ -89,14 +87,13 @@
 	\MakeUppercase{\textbf{#1}}
 	\smallskip
 	\hrule
-	% \vspace{-5pt}
 }
 
 \newcommand{\experience}[4]{
 	\if@compact\smallskip
 	\else\medskip\fi
-	\textbf{#1\addressSep#2}\hfill{#3}\\
-	\textit{#4}
+	\textbf{#1}\hfill\textbf{#2}\\
+	\textit{#4\hfill#3}
 	\smallskip
 }
 

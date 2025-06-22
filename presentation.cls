@@ -1,41 +1,37 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{presentation}[2024-11-10]
+\ProvidesClass{presentation}[2024/12/25 Presentation class]
 \LoadClass{beamer}
 
-\usetheme{AnnArbor}
-\usecolortheme{wolverine}
-% \useinnertheme{circles}
-% \useoutertheme{infolines}
-
 \RequirePackage{
-  geometry,
-  amsmath,
-  siunitx, 
-  pgfplots, 
-  booktabs, 
-  mdframed, 
-  tcolorbox,
+	amsthm,
+	amsmath,
+	amssymb,
+	xcolor,
+	geometry,
+	graphicx,
+	csvsimple,
+	tikz,
+	inputenc,
 }
 
+\input{statistics-commands}
+\input{programming-commands}
 
-% Names
 \author{Silas Falde}
 \institute{University of Michigan}
+\logo{\includegraphics[height=0.25cm]{umich-logo.png}}
 
-% Options
-\input{subj_options.tex}
-\ProcessOptions\relax
+\usetheme{Berlin}
+\usecolortheme{wolverine}
+\usetikzlibrary{shapes.symbols}
 
-% Option Commands
-\input{subj_commands.tex}
+\AtBeginSection[]
+{
+	\begin{frame}
+		\frametitle{Table of Contents}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
 
-% Other Commands
-\input{math_commands.tex}
+\setbeamertemplate{navigation symbols}{}
 
-% Plots
-\pgfplotsset{width=0.8\textwidth,compat=1.9}
-\usepgfplotslibrary{external}
-% \tikzexternalize
-% \usepgfplotslibrary{fillbetween}
-
-\endinput
