@@ -22,7 +22,7 @@
 \geometry{margin=0.75in}
 
 \if@compact
-	\setlength{\parskip}{0.55em}
+	\setlength{\parskip}{0pt plus 1fil}
 	\geometry{margin=0.5in}
 	\pagenumbering{gobble}
 \fi
