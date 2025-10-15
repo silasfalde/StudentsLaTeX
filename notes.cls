@@ -20,7 +20,7 @@
   amsmath,
 }
 
-\input{statistics-commands.tex}
+\input{math-commands.tex}
 \input{programming-commands.tex}
 
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
@@ -39,13 +39,13 @@
 }
 
 % Sections
-\titleformat{\section}
-{\normalfont\large\bfseries}{\thesection}{1em}{}
-[\titlerule]
-\titleformat{\subsection}[runin]
-{\normalfont\normalsize\bfseries}{\thesubsection}
-{10pt}{}
-[.]
+\titleformat{\chapter}{\normalfont\large\bfseries}{\thechapter}{1em}{}
+[\titlerule\vspace{-2em}]
+\titleclass{\chapter}{straight}
+
+\titleformat{\section}[block]{\normalfont\normalsize\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}[block]{\normalfont\small\bfseries}{\thesubsection}{1em}{}
+
 
 % Geometry
 \setlength{\parindent}{0pt}
@@ -80,5 +80,7 @@
   \usepackage{enumitem}
   \setlist[itemize]{leftmargin=1.5em}
 \fi
+
+
 
 \endinput

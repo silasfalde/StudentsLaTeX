@@ -14,7 +14,7 @@
 	inputenc,
 }
 
-\input{statistics-commands}
+\input{math-commands}
 \input{programming-commands}
 
 \author{Silas Falde}

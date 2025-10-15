@@ -1,18 +1,24 @@
 \newcommand{\function}[2]{\mathrm{#1}\hspace{-1pt}\left(#2\right)}
 
+% Calculus
+\newcommand{\diff}{\mathop{}\!\mathrm{d}}
+
+% Linear algebra
 \newcommand{\magnitude}[1]{\left\lvert#1\right\rvert}
 \newcommand{\norm}[1]{\|#1\|}
 
+% Set theory
 \newcommand{\union}[2]{#1 \cup #2}
-\newcommand{\given}[2]{#1 \hspace{1pt} \rvert #2}
+\newcommand{\given}{\hspace{1pt} \rvert}
 \newcommand{\intersection}[2]{#1 \cap #2}
 \renewcommand{\choose}[2]{\genfrac{(}{)}{0pt}{}{#1}{#2}}
-\renewcommand{\not}[1]{\overline{#1}}
+\renewcommand{\not}[1]{\lnot {#1}}
 
+% Probability
 \newcommand{\prob}[1]{\function{P}{#1}}
 \newcommand{\var}[1]{\function{Var}{#1}}
 \newcommand{\stddev}[1]{\function{SD}{#1}}
-\newcommand{\expect}[1]{\function{E}{#1}}
+\newcommand{\expected}[1]{\function{E}{#1}}
 \newcommand{\entropy}[1]{\function{H}{#1}}
 \newcommand{\infoGain}[1]{\function{IG}{#1}}
 \newcommand{\pdf}[1]{\function{PDF}{#1}}
@@ -30,5 +36,6 @@
 \newcommand{\Loss}[1]{\function{Loss}{#1}}
 \newcommand{\Risk}[1]{\function{Risk}{#1}}
 
+% Regression
 \newcommand{\RSS}{\text{RSS}}
 \newcommand{\SSreg}{\text{SSreg}}

@@ -1,8 +1,8 @@
 \ProvidesClass{assignment}[2025/04/16 v1.0 Assignment class]
 \LoadClass[10pt,letterpaper]{article}
 
-\newif\if@sectionnewpage
-\DeclareOption{sectionnewpage}{\@sectionnewpagetrue}
+\newif\if@newpages
+\DeclareOption{newpages}{\@newpagestrue}
 \ProcessOptions\relax
 
 \RequirePackage{
@@ -19,7 +19,7 @@
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
 
 % Load custom commands
-\input{statistics-commands}
+\input{math-commands}
 \input{programming-commands}
 
 % Variables
@@ -32,12 +32,12 @@
 \setlength{\parskip}{0.5em}
 
 % Sections
-\titleformat{\section}[block]{\if@sectionnewpage\clearpage\fi\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\section}[block]{\if@newpages\clearpage\fi\normalfont\Large\bfseries}{\thesection}{1em}{}
 
-% Subsubsections
-\renewcommand{\thesubsubsection}{\Alph{subsubsection}}
-\titleformat{\subsubsection}[block]
-{\normalfont\normalsize\bfseries}{\thesubsubsection.}{1em}{}
+% Subsections
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\titleformat{\subsection}[block]
+{\normalfont\normalsize\bfseries}{\thesubsection)}{1em}{}
 
 % Title
 \renewcommand{\maketitle}{
