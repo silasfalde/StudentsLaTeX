@@ -1,13 +1,13 @@
 \ProvidesClass{notes}
-\LoadClass[letterpaper]{report}
-
-\DeclareOption{9pt}{\PassOptionsToClass{9pt}{report}}
-\DeclareOption{10pt}{\PassOptionsToClass{10pt}{report}}
-\DeclareOption{11pt}{\PassOptionsToClass{11pt}{report}}
 
 \newif\if@compact
 \DeclareOption{compact}{\@compacttrue}
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{extreport}}
+
 \ProcessOptions\relax
+
+\LoadClass{extreport}
 
 \RequirePackage{
   geometry,
@@ -39,11 +39,12 @@
 }
 
 % Sections
-\titleformat{\chapter}{\normalfont\large\bfseries}{\thechapter}{1em}{}
-[\titlerule\vspace{-2em}]
+\titleformat{\chapter}{\normalfont\large\bfseries}{\thechapter}{0.5em}{}[\titlerule]
 \titleclass{\chapter}{straight}
+\titlespacing{\chapter}{0pt}{0.5em plus 1em}{0.5em plus 0.5em}
 
 \titleformat{\section}[block]{\normalfont\normalsize\bfseries}{\thesection}{1em}{}
+\titlespacing{\section}{0pt}{0.5em plus 1em}{0.5em plus 0.5em}
 \titleformat{\subsection}[block]{\normalfont\small\bfseries}{\thesubsection}{1em}{}
 
 
@@ -71,16 +72,18 @@
     }}
 
 \if@compact
-  \setlength{\parskip}{0.7em}
-  \geometry{margin=0.5in, top=0.7in}
+  \setlength{\parskip}{0em plus 1fill}
+  \geometry{margin=0.25in}
   \pagenumbering{gobble}
-  \twocolumn
-  \setlength{\columnsep}{1.5em}
-  \renewcommand{\thesection}{\arabic{section}}
+  \usepackage{multicol}
+  \setlength{\columnsep}{1em}
+  \setlength{\columnwidth}{0.3\textwidth}
+  \AtBeginDocument{\begin{multicols*}{3}}
+      \AtEndDocument{\end{multicols*}}
   \usepackage{enumitem}
-  \setlist[itemize]{leftmargin=1.5em}
+  \setlist[itemize]{leftmargin=1.5em,itemsep=0em plus 1fill}
+  \setlist[enumerate]{leftmargin=1.5em,itemsep=0em plus 1fill}
+  \renewcommand{\part}[1]{} % make the part command do nothing
 \fi
-
-
 
 \endinput
