@@ -1,9 +1,13 @@
 \ProvidesClass{assignment}[2025/04/16 v1.0 Assignment class]
-\LoadClass[10pt,letterpaper]{article}
 
 \newif\if@newpages
 \DeclareOption{newpages}{\@newpagestrue}
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{extreport}}
+
 \ProcessOptions\relax
+
+\LoadClass{article}
 
 \RequirePackage{
   amsthm,
