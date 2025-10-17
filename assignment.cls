@@ -33,7 +33,7 @@
 % Page layout
 \geometry{margin=1in}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.5em}
+\setlength{\parskip}{0.75em}
 
 % Sections
 \titleformat{\section}[block]{\if@newpages\clearpage\fi\normalfont\Large\bfseries}{\thesection}{1em}{}
