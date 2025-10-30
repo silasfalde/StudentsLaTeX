@@ -38,13 +38,16 @@
   \end{tcolorbox}
 }
 
-% Sections
+% Chapters
 \titleformat{\chapter}{\normalfont\large\bfseries}{\thechapter}{0.5em}{}[\titlerule]
 \titleclass{\chapter}{straight}
-\titlespacing{\chapter}{0pt}{0.5em plus 1em}{0.5em plus 0.5em}
+\titlespacing{\chapter}{0pt}{1.5em plus 1em}{0.5em plus 0.5em}
 
+% Sections
 \titleformat{\section}[block]{\normalfont\normalsize\bfseries}{\thesection}{1em}{}
 \titlespacing{\section}{0pt}{0.5em plus 1em}{0.5em plus 0.5em}
+
+% Subsections
 \titleformat{\subsection}[block]{\normalfont\small\bfseries}{\thesubsection}{1em}{}
 
 
@@ -84,6 +87,7 @@
   \setlist[itemize]{leftmargin=1.5em,itemsep=0em plus 1fill}
   \setlist[enumerate]{leftmargin=1.5em,itemsep=0em plus 1fill}
   \renewcommand{\part}[1]{} % make the part command do nothing
+  \titlespacing{\chapter}{0pt}{0.5em plus 1em}{0.5em plus 0.5em}
 \fi
 
 \endinput
