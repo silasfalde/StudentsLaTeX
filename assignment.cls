@@ -18,6 +18,7 @@
   graphicx,
   csvsimple,
   titlesec,
+  enumerate,
 }
 
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
@@ -42,6 +43,7 @@
 \renewcommand{\thesubsection}{\Alph{subsection}}
 \titleformat{\subsection}[block]
 {\normalfont\normalsize\bfseries}{\thesubsection)}{1em}{}
+
 
 % Title
 \renewcommand{\maketitle}{
