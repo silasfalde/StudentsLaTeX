@@ -2,6 +2,8 @@
 
 \newif\if@newpages
 \DeclareOption{newpages}{\@newpagestrue}
+\newif\if@numericsubsections
+\DeclareOption{numericsubsections}{\@numericsubsectionstrue}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{extreport}}
 
@@ -40,10 +42,13 @@
 \titleformat{\section}[block]{\if@newpages\clearpage\fi\normalfont\Large\bfseries}{\thesection}{1em}{}
 
 % Subsections
+\if@numericsubsections
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\else
 \renewcommand{\thesubsection}{\Alph{subsection}}
 \titleformat{\subsection}[block]
 {\normalfont\normalsize\bfseries}{\thesubsection)}{1em}{}
-
+\titlespacing{\subsection}{0pt}{0.5em plus 1em}{0.5em plus 0.5em}
 
 % Title
 \renewcommand{\maketitle}{
@@ -54,5 +59,3 @@
     \normalsize\today
   \end{center}
 }
-
-\endinput
