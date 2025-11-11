@@ -42,13 +42,14 @@
 \titleformat{\section}[block]{\if@newpages\clearpage\fi\normalfont\Large\bfseries}{\thesection}{1em}{}
 
 % Subsections
-\if@numericsubsections
-\renewcommand{\thesubsection}{\arabic{subsection}}
-\else
-\renewcommand{\thesubsection}{\Alph{subsection}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 \titleformat{\subsection}[block]
 {\normalfont\normalsize\bfseries}{\thesubsection)}{1em}{}
 \titlespacing{\subsection}{0pt}{0.5em plus 1em}{0.5em plus 0.5em}
+
+% Subsubsections
+\titleformat{\subsubsection}[block]
+{\normalfont\normalsize\bfseries\textit}{\thesubsubsection)}{1em}{}
 
 % Title
 \renewcommand{\maketitle}{
