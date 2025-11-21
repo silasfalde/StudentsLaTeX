@@ -45,8 +45,7 @@
 
 % Subsections
 \renewcommand{\thesubsection}{\thesection.\if@arabicsubsec\arabic{subsection}\else\Alph{subsection}\fi}
-\titleformat{\subsection}[block]
-{\normalfont\large\bfseries}{\thesubsection)}{0em}{\noindent\hrule height 0.8pt\relax\vspace{-1.5em}}
+\titleformat{\subsection}[block]{\normalfont\large\bfseries}{\thesubsection)}{0.5em}{}
 \titlespacing{\subsection}{0pt}{0.5em plus 1em}{0em plus 1em}
 
 % Subsubsections
