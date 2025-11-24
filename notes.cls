@@ -32,13 +32,6 @@
 \newcommand{\class}[1]{\newcommand{\@class}{#1}}
 \author{Silas Falde}
 
-% Note Environment
-\newenvironment{note}{
-  \begin{tcolorbox}[colback=black!5!white,colframe=black,title={\centering{Note}}]
-    }{
-  \end{tcolorbox}
-}
-
 % Chapters
 \titleformat{\chapter}{\normalfont\large\bfseries}{\thechapter}{0.5em}{}[\titlerule]
 \titleclass{\chapter}{straight}
@@ -46,7 +39,7 @@
 
 % Sections
 \titleformat{\section}[block]{\normalfont\normalsize\bfseries}{\thesection}{1em}{}
-\titlespacing{\section}{0pt}{0.5em plus 1em}{0.5em plus 0.5em}
+\titlespacing{\section}{0pt}{1.5em plus 1em}{0.5em plus 1em}
 
 % Subsections
 \titleformat{\subsection}[block]{\normalfont\small\bfseries}{\thesubsection}{1em}{}
