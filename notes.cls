@@ -18,6 +18,7 @@
   amsthm,
   stmaryrd,
   amsmath,
+  amssymb,
 }
 
 \input{math-commands.tex}
