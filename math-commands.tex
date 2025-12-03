@@ -1,40 +1,33 @@
-\newcommand{\function}[2]{\mathrm{#1}\hspace{-1pt}\left(#2\right)}
-
 % Calculus
 \newcommand{\diff}{\mathop{}\!\mathrm{d}}
-
-% Linear algebra
-\newcommand{\magnitude}[1]{\left\lvert#1\right\rvert}
-\newcommand{\norm}[1]{\|#1\|}
 
 % Set theory
 \newcommand{\union}[2]{#1 \cup #2}
 \newcommand{\given}{\hspace{1pt} \rvert}
 \newcommand{\intersection}[2]{#1 \cap #2}
 \renewcommand{\choose}[2]{\genfrac{(}{)}{0pt}{}{#1}{#2}}
-\renewcommand{\not}[1]{\lnot {#1}}
 
 % Probability
-\newcommand{\prob}[1]{\function{P}{#1}}
-\newcommand{\var}[1]{\function{Var}{#1}}
-\newcommand{\stddev}[1]{\function{SD}{#1}}
-\newcommand{\expected}[1]{\function{E}{#1}}
-\newcommand{\entropy}[1]{\function{H}{#1}}
-\newcommand{\infoGain}[1]{\function{IG}{#1}}
-\newcommand{\pdf}[1]{\function{PDF}{#1}}
-\newcommand{\cdf}[1]{\function{CDF}{#1}}
-\newcommand{\covariance}[2]{\function{Cov}{#1, #2}}
-\newcommand{\binomial}[2]{\function{Bin}{#1, #2}}
-\newcommand{\bernoulli}[1]{\function{Bernoulli}{#1}}
-\newcommand{\normal}[2]{\function{N}{#1, #2}}
-\newcommand{\poisson}[1]{\function{Poisson}{#1}}
-\renewcommand{\exp}[1]{\function{exp}{#1}}
-\renewcommand{\ln}[1]{\function{ln}{#1}}
-\newcommand{\mse}[1]{\function{MSE}{#1}}
-\newcommand{\mle}[1]{\function{MLE}{#1}}
-\newcommand{\sign}[1]{\function{sign}{#1}}
-\newcommand{\Loss}[1]{\function{Loss}{#1}}
-\newcommand{\Risk}[1]{\function{Risk}{#1}}
+\newcommand{\prob}{\mathop{\mathrm{P}}}
+\newcommand{\var}{\mathop{\mathrm{Var}}}
+\newcommand{\stddev}{\mathop{\mathrm{SD}}}
+\newcommand{\expected}{\mathop{\mathrm{E}}}
+\newcommand{\entropy}{\mathop{\mathrm{H}}}
+\newcommand{\infoGain}{\mathop{\mathrm{IG}}}
+\newcommand{\pdf}{\mathop{\mathrm{PDF}}}
+\newcommand{\cdf}{\mathop{\mathrm{CDF}}}
+\newcommand{\covariance}{\mathop{\mathrm{Cov}}}
+\newcommand{\binomial}{\mathop{\mathrm{Bin}}}
+\newcommand{\bernoulli}{\mathop{\mathrm{Bernoulli}}}
+\newcommand{\normal}{\mathop{\mathrm{N}}}
+\newcommand{\poisson}{\mathop{\mathrm{Poisson}}}
+\renewcommand{\exp}{\mathop{\mathrm{exp}}}
+\renewcommand{\ln}{\mathop{\mathrm{ln}}}
+\newcommand{\mse}{\mathop{\mathrm{MSE}}}
+\newcommand{\mle}{\mathop{\mathrm{MLE}}}
+\newcommand{\sign}{\mathop{\mathrm{sign}}}
+\newcommand{\Loss}{\mathop{\mathrm{Loss}}}
+\newcommand{\Risk}{\mathop{\mathrm{Risk}}}
 
 % Regression
 \newcommand{\RSS}{\text{RSS}}
@@ -43,9 +36,11 @@
 % Discrete math
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
 \newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
-\newcommand{\softmax}[1]{\function{softmax}{#1}}
-
-% Algorithms
-\newcommand{\BigO}[1]{\function{O}{#1}}
-\newcommand{\BigOmega}[1]{\function{\Omega}{#1}}
-\newcommand{\BigTheta}[1]{\function{\Theta}{#1}}
+\newcommand{\softmax}{\mathop{\mathrm{softmax}}}
+\newcommand{\magnitude}[1]{\left\lvert#1\right\rvert}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\BigO}{\mathop{\mathrm{O}}}
+\newcommand{\argmax}{\mathop{\mathrm{argmax}}}
+\newcommand{\reward}{\mathop{\mathrm{R}}}
+\newcommand{\utility}{\mathop{\mathrm{U}}}
+\newcommand{\num}{\mathop{\mathrm{N}}}

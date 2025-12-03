@@ -19,6 +19,7 @@
   stmaryrd,
   amsmath,
   amssymb,
+  enumitem,
 }
 
 \input{math-commands.tex}
@@ -43,6 +44,10 @@
 
 % Subsections
 \titleformat{\subsection}[block]{\normalfont\small\bfseries}{\thesubsection}{1em}{}
+
+% Itemize and Enumerate
+\setlist[itemize]{itemsep=0em}
+\setlist[enumerate]{itemsep=0em}
 
 
 % Geometry
@@ -77,7 +82,6 @@
   \setlength{\columnwidth}{0.3\textwidth}
   \AtBeginDocument{\begin{multicols*}{3}}
       \AtEndDocument{\end{multicols*}}
-  \usepackage{enumitem}
   \setlist[itemize]{leftmargin=1.5em,itemsep=0em plus 1fill}
   \setlist[enumerate]{leftmargin=1.5em,itemsep=0em plus 1fill}
   \renewcommand{\part}[1]{} % make the part command do nothing
