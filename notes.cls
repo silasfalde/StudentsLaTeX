@@ -15,7 +15,6 @@
   titlesec,
   xcolor,
   tcolorbox,
-  amsthm,
   stmaryrd,
   amsmath,
   amssymb,
@@ -26,8 +25,6 @@
 \input{programming-commands.tex}
 
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
-
-\newtheorem{theorem}{Theorem}[chapter]
 
 % Names
 \newcommand{\class}[1]{\newcommand{\@class}{#1}}
@@ -62,7 +59,7 @@
       \includegraphics[width=0.4\textwidth]{umich-logo.png}
       \vspace{1cm}
 
-      {\Huge\bfseries \@title \par}
+      {\Huge\bfseries \@class \ -- \@title \par}
       \vspace{0.5cm}
 
       {\Large \@author \par}
