@@ -77,7 +77,7 @@
   \usepackage{multicol}
   \setlength{\columnsep}{1em}
   \setlength{\columnwidth}{0.3\textwidth}
-  \AtBeginDocument{\begin{multicols*}{3}}
+  \AtBeginDocument{\begin{multicols*}{2}}
       \AtEndDocument{\end{multicols*}}
   \setlist[itemize]{leftmargin=1.5em,itemsep=0em plus 1fill}
   \setlist[enumerate]{leftmargin=1.5em,itemsep=0em plus 1fill}
