@@ -23,6 +23,7 @@
   csvsimple,
   titlesec,
   enumerate,
+  siunitx,
 }
 
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
