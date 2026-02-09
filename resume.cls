@@ -9,6 +9,15 @@
 	geometry,
 	amsmath,
 	spacingtricks,
+	hyperref
+}
+
+% Hyperref setup
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	citecolor=black,
+	urlcolor=black
 }
 
 
@@ -66,7 +75,7 @@
 \smallskip
 }
 
-\address{(517) 539-1532 \\ sfalde@umich.edu}
+\address{(517) 539-1532 \\ sfalde05@gmail.com \\ \href{https://silasfalde.github.io}{silasfalde.github.io}}
 
 
 % Header
