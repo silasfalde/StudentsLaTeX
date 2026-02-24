@@ -34,7 +34,7 @@
 %%
 %% 5. OPTIONAL HEADER LOGO:
 %%    \headerlogo{\includegraphics[height=1cm]{your-logo.png}}
-%%    (Default: umich-logo.png at 1cm height)
+%%    (No default logo)
 %%
 %% 6. LETTER CONTENT:
 %%    \opening{Dear Sir or Madam,}
@@ -84,7 +84,6 @@
 \newif\ifCL@headerlogo\CL@headerlogofalse
 \newcommand{\@headerlogo}{}
 \newcommand{\headerlogo}[1]{\renewcommand{\@headerlogo}{#1}\CL@headerlogotrue}
-\headerlogo{\includegraphics[height=1cm]{umich-logo.png}}
 
 
 \newcommand{\manuscript}[2]{%
