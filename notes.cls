@@ -1,11 +1,17 @@
 \ProvidesClass{notes}
 
+\RequirePackage{xkeyval}
+
 \newif\if@compact
-\DeclareOption{compact}{\@compacttrue}
+\newcount\notes@columns
+\notes@columns=2\relax
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{extreport}}
+\DeclareOptionX{compact}{\@compacttrue}
+\DeclareOptionX{columns}{\notes@columns=#1\relax}
 
-\ProcessOptions\relax
+\DeclareOptionX*{\PassOptionsToClass{\CurrentOption}{extreport}}
+
+\ProcessOptionsX\relax
 
 \LoadClass{extreport}
 
@@ -71,16 +77,18 @@
     }}
 
 \if@compact
-  \setlength{\parskip}{0em plus 1fill}
-  \geometry{margin=0.25in}
+  \usepackage{mathptmx}
+  \setlength{\parskip}{0cm}
+  \setlength{\parindent}{0em}
+  \geometry{margin=0.2in}
   \pagenumbering{gobble}
   \usepackage{multicol}
   \setlength{\columnsep}{1em}
   \setlength{\columnwidth}{0.3\textwidth}
-  \AtBeginDocument{\begin{multicols*}{2}}
+  \AtBeginDocument{\begin{multicols*}{\the\notes@columns}}
       \AtEndDocument{\end{multicols*}}
-  \setlist[itemize]{leftmargin=1.5em,itemsep=0em plus 1fill}
-  \setlist[enumerate]{leftmargin=1.5em,itemsep=0em plus 1fill}
+  \setlist[itemize]{leftmargin=1em,itemsep=-5pt plus 1fill}
+  \setlist[enumerate]{leftmargin=1em,itemsep=-5pt plus 1fill}
   \renewcommand{\part}[1]{} % make the part command do nothing
   \titlespacing{\chapter}{0pt}{0.5em plus 1em}{0.5em plus 0.5em}
 \fi
