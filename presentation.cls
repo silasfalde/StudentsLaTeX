@@ -19,7 +19,7 @@
 
 \author{Silas Falde}
 \institute{University of Michigan}
-\logo{\includegraphics[height=0.25cm]{umich-logo.png}}
+\logo{\raisebox{-0.3cm}{\includegraphics[height=0.25cm]{umich-logo.png}}}
 
 \usetheme{Berlin}
 \usecolortheme{wolverine}
