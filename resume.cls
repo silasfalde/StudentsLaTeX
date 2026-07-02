@@ -28,11 +28,12 @@
 
 
 % Geometry
-\geometry{margin=0.75in}
+\geometry{top=0.6in, bottom=0.75in, left=0.75in, right=0.75in}
 
 \if@compact
 	\setlength{\parskip}{0pt plus 1fil}
-	\geometry{margin=0.5in}
+	\linespread{0.7}\selectfont
+	\geometry{top=0.3in, bottom=0.4in, left=0.5in, right=0.5in}
 	\pagenumbering{gobble}
 \fi
 
@@ -75,7 +76,7 @@
 \smallskip
 }
 
-\address{(517) 539-1532 \\ sfalde05@gmail.com \\ \href{https://silasfalde.github.io}{silasfalde.github.io}}
+\address{(517) 539-1532 \\ sfalde05@gmail.com \\ \href{https://silasfalde.net}{www.silasfalde.net}}
 
 
 % Header
