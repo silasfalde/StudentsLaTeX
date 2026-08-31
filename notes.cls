@@ -76,6 +76,8 @@
       \newpage
     }}
 
+\title{Notes}
+
 \if@compact
   \usepackage{mathptmx}
   \setlength{\parskip}{0cm}
