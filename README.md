@@ -13,6 +13,9 @@ texmf/
     ├── assignment.cls
     ├── coverletter.cls
     ├── essay.cls
+    ├── intellisense/
+    │   ├── latex-custom-classes.cwl
+    │   └── latex-custom-classes.json
     ├── math-commands.tex
     ├── notes.cls
     ├── presentation.cls
@@ -40,6 +43,39 @@ installation is required. The `essay`, `notes`, and `presentation` classes
 expect an `umich-logo.png` file when their title pages are created. Put that
 file in the document directory or make it available through TeX's search
 path.
+
+## Editor Completion
+
+The `intellisense` directory contains completion metadata for the custom
+commands and environments in this repository. It includes the class commands
+(`\class`, `\headerlogo`, `\manuscript`, and `\suggestedref`), the `problem`
+and `context` environments, the shared math commands, and the listings
+commands and `pseudo` language.
+
+LaTeX Workshop can load the JSON file globally, which makes completion work in
+documents located in other repositories and directories. Add the following to
+your VS Code user `settings.json`, changing the path if this repository is
+located elsewhere:
+
+```json
+{
+  "latex-workshop.intellisense.package.dirs": [
+    "/home/silas-falde/texmf/tex/latex/latex_custom_classes/intellisense"
+  ],
+  "latex-workshop.intellisense.package.extra": [
+    "latex-custom-classes"
+  ]
+}
+```
+
+Restart or reload VS Code after changing the settings. The completion data is
+loaded for every LaTeX project, so typing `\problem`, `\begin{problem}`, or
+commands such as `\expectation` will provide suggestions even when the class
+or command definitions are outside the current project directory.
+
+The `.cwl` file is the source-format equivalent for editors such as TeXstudio.
+It can also be regenerated into the JSON format if the custom commands or
+classes change. Keep the two files synchronized when extending the repository.
 
 ## Assignment Class
 
@@ -81,9 +117,8 @@ The class also accepts options supported by the underlying article class.
 
 ### Problem statements
 
-The optional `problem` environment provides a bold `Problem.` label without
-adding a theorem number. It is useful for placing a statement before a
-solution:
+The optional `problem` environment places an unnumbered statement in a
+light-gray, page-breakable card, visually separating it from its solution:
 
 ```latex
 \begin{problem}

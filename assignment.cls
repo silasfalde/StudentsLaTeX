@@ -17,6 +17,7 @@
   amsthm,
   amsmath,
   amssymb,
+  tcolorbox,
   xcolor,
   geometry,
   graphicx,
@@ -45,9 +46,20 @@
 \titleformat{\section}[block]{\if@newpages\clearpage\fi\normalfont\Large\bfseries}{\thesection}{1em}{}
 
 % Problem statements
-\newenvironment{problem}
-{\par\noindent\textbf{Problem.}\par\noindent}
-{\par}
+\tcbuselibrary{breakable}
+\newtcolorbox{problem}{
+  breakable,
+  colback=gray!8,
+  colframe=gray!55,
+  boxrule=0.4pt,
+  arc=1.5pt,
+  left=1em,
+  right=1em,
+  top=0.75em,
+  bottom=0.75em,
+  fonttitle=\bfseries,
+  title=Problem,
+}
 \newenvironment{context}
 {\begin{problem}}
   {\end{problem}}
