@@ -1,0 +1,199 @@
+{
+    "deps": [],
+    "macros": [
+        {
+            "name": "documentclass",
+            "arg": {
+                "format": "[]{}",
+                "snippet": "documentclass[${1:options}]{${2:class}}"
+            }
+        },
+        {
+            "name": "class",
+            "arg": {
+                "format": "{}",
+                "snippet": "class{${1:class name}}"
+            }
+        },
+        {
+            "name": "headerlogo",
+            "arg": {
+                "format": "{}",
+                "snippet": "headerlogo{${1:logo content}}"
+            }
+        },
+        {
+            "name": "manuscript",
+            "arg": {
+                "format": "{}{}",
+                "snippet": "manuscript{${1:title}}{${2:details}}"
+            }
+        },
+        {
+            "name": "suggestedref",
+            "arg": {
+                "format": "{}{}{}",
+                "snippet": "suggestedref{${1:name}}{${2:title or affiliation}}{${3:email}}"
+            }
+        },
+        {
+            "name": "diff"
+        },
+        {
+            "name": "prob"
+        },
+        {
+            "name": "stddev"
+        },
+        {
+            "name": "expectation"
+        },
+        {
+            "name": "variance"
+        },
+        {
+            "name": "entropy"
+        },
+        {
+            "name": "infoGain"
+        },
+        {
+            "name": "pdf"
+        },
+        {
+            "name": "cdf"
+        },
+        {
+            "name": "covariance"
+        },
+        {
+            "name": "binomialdist"
+        },
+        {
+            "name": "bernoullidist"
+        },
+        {
+            "name": "normaldist"
+        },
+        {
+            "name": "gammadist"
+        },
+        {
+            "name": "poissondist"
+        },
+        {
+            "name": "uniformdist"
+        },
+        {
+            "name": "betadist"
+        },
+        {
+            "name": "exp"
+        },
+        {
+            "name": "ln"
+        },
+        {
+            "name": "mse"
+        },
+        {
+            "name": "mle"
+        },
+        {
+            "name": "sign"
+        },
+        {
+            "name": "Loss"
+        },
+        {
+            "name": "Risk"
+        },
+        {
+            "name": "RSS"
+        },
+        {
+            "name": "SSreg"
+        },
+        {
+            "name": "floor",
+            "arg": {
+                "format": "{}",
+                "snippet": "floor{${1:expression}}"
+            }
+        },
+        {
+            "name": "ceil",
+            "arg": {
+                "format": "{}",
+                "snippet": "ceil{${1:expression}}"
+            }
+        },
+        {
+            "name": "softmax"
+        },
+        {
+            "name": "magnitude",
+            "arg": {
+                "format": "{}",
+                "snippet": "magnitude{${1:expression}}"
+            }
+        },
+        {
+            "name": "norm",
+            "arg": {
+                "format": "{}",
+                "snippet": "norm{${1:expression}}"
+            }
+        },
+        {
+            "name": "BigO"
+        },
+        {
+            "name": "argmax"
+        },
+        {
+            "name": "reward"
+        },
+        {
+            "name": "utility"
+        },
+        {
+            "name": "lstset",
+            "arg": {
+                "format": "{}",
+                "snippet": "lstset{${1:style}}"
+            }
+        },
+        {
+            "name": "lstinputlisting",
+            "arg": {
+                "format": "[]{}",
+                "snippet": "lstinputlisting[${1:options}]{${2:file}}"
+            }
+        },
+        {
+            "name": "lstinline",
+            "arg": {
+                "format": "|",
+                "snippet": "lstinline|${1:code}|"
+            }
+        }
+    ],
+    "envs": [
+        {
+            "name": "problem"
+        },
+        {
+            "name": "context"
+        },
+        {
+            "name": "lstlisting",
+            "arg": {
+                "format": "[]",
+                "snippet": "[${1:options}]"
+            }
+        }
+    ],
+    "keys": {},
+    "args": []
+}
