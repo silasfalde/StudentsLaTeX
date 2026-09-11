@@ -1,0 +1,74 @@
+{
+    // Global/workspace LaTeX snippets. Every entry is scoped to "latex" so it
+    // does not interfere with other languages when installed globally.
+    "Initialize Notes Document": {
+        "scope": "latex",
+        "prefix": "notes",
+        "body": [
+            "\\documentclass{notes}",
+            "",
+            "\\class{${1:Class ID}}",
+            "\\title{${2:Class name}}",
+            "",
+            "\\begin{document}",
+            "\\maketitle",
+            "\\tableofcontents",
+            "",
+            "$0",
+            "",
+            "\\end{document}"
+        ],
+        "description": "Initialize a barebones LaTeX notes document"
+    },
+    "Initialize Cover Letter": {
+        "scope": "latex",
+        "prefix": "coverletter",
+        "body": [
+            "\\documentclass{coverletter}",
+            "",
+            "\\signature{${1:Your Name}}",
+            "\\address{${2:Street Address} \\\\ ${3:City, State ZIP}}",
+            "",
+            "\\begin{document}",
+            "",
+            "\\begin{letter}{${4:Hiring Manager} \\\\ ${5:Company} \\\\ ${6:Company Address}}",
+            "",
+            "    \\opening{Dear ${7:Hiring Manager},}",
+            "",
+            "        ${8:Opening paragraph connecting your background to the role.}",
+            "",
+            "        ${9:Paragraph describing your most relevant experience and accomplishments.}",
+            "",
+            "        ${10:Paragraph connecting your skills to the organization's needs.}",
+            "",
+            "        ${11:Closing paragraph expressing interest and requesting an interview.}",
+            "",
+            "    \\closing{${12:Sincerely,}}",
+            "",
+            "\\end{letter}",
+            "",
+            "\\end{document}",
+            "$0"
+        ],
+        "description": "Initialize a cover letter using the coverletter document class"
+    },
+    "Initialize Assignment Document": {
+        "scope": "latex",
+        "prefix": "latex-assignment",
+        "body": [
+            "\\documentclass{assignment}",
+            "",
+            "\\class{${1:Class ID}}",
+            "\\title{${2:Homework 1}}",
+            "",
+            "\\begin{document}",
+            "\\maketitle",
+            "\\tableofcontents",
+            "",
+            "$0",
+            "",
+            "\\end{document}"
+        ],
+        "description": "Initialize a barebones LaTeX assignment document"
+    }
+}

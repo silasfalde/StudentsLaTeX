@@ -1,47 +1,115 @@
-# Custom LaTeX Classes
+# Custom LaTeX Classes for Students
 
-A small collection of LaTeX classes and shared command files for assignments,
-essays, notes, cover letters, and presentations.
+A ready-to-use collection of LaTeX classes and shared command files for
+writing school documents: assignments, essays, notes, cover letters, and
+presentations. Install it once, and every document you write can use these
+classes without copying files into each project or redefining commands from
+scratch.
+
+## Contents
+
+| File | Purpose |
+| --- | --- |
+| `assignment.cls` | Homework and problem sets |
+| `essay.cls` | Essays with a title page |
+| `notes.cls` | Chaptered course notes, including a compact layout for automatic exam note generation |
+| `coverletter.cls` | Professional cover letters |
+| `presentation.cls` | Beamer slide decks |
+| `math-commands.tex` | Shared math/statistics notation, loaded by the classes above |
+| `programming-commands.tex` | Shared code-listing style and a `pseudo` language, loaded by the classes above |
+| `intellisense/` | Editor completion metadata for the custom commands and environments |
+| `snippets/` | VS Code snippets for quickly starting documents that use these classes |
+
+## Requirements
+
+A working LaTeX distribution is required:
+
+- **macOS**: [MacTeX](https://tug.org/mactex/)
+- **Windows**: [MiKTeX](https://miktex.org/) or [TeX Live](https://tug.org/texlive/)
+- **Linux**: [TeX Live](https://tug.org/texlive/) (usually available via your
+  package manager, e.g. `texlive-full`)
+
+The classes load their own package dependencies (`amsmath`, `graphicx`,
+`hyperref`, etc.), so a reasonably complete distribution such as the ones
+above is recommended. All author, course, institution, and logo details
+belong in each document, so the classes can be reused without editing their
+source files.
 
 ## Installation
 
-The repository is already arranged as a local TeX tree:
+TeX looks for classes and packages in your personal TeX tree, commonly
+referred to by the `TEXMFHOME` variable. Installing this repository means
+placing it inside that tree, in a `tex/latex` subdirectory. Run
+`kpsewhich -var-value TEXMFHOME` to see the location your installation
+expects; if it isn't set, use the defaults below.
 
-```text
-texmf/
-└── tex/latex/latex_custom_classes/
-    ├── assignment.cls
-    ├── coverletter.cls
-    ├── essay.cls
-    ├── intellisense/
-    │   ├── latex-custom-classes.cwl
-    │   └── latex-custom-classes.json
-    ├── math-commands.tex
-    ├── notes.cls
-    ├── presentation.cls
-    └── programming-commands.tex
+Clone or download this repository into that location:
+
+```sh
+git clone <this-repository-url> custom-classes
 ```
 
-To use the classes, make the directory containing `assignment.cls` and the
-other files visible to TeX. For a local TeX tree, set `TEXMFHOME` to the
-parent `texmf` directory, or copy/link this tree into your existing TeX
-installation. Verify that TeX can find a class with:
+### macOS
+
+Default `TEXMFHOME`: `~/Library/texmf`
+
+```sh
+mkdir -p ~/Library/texmf/tex/latex
+git clone <this-repository-url> ~/Library/texmf/tex/latex/custom-classes
+```
+
+### Linux
+
+Default `TEXMFHOME`: `~/texmf`
+
+```sh
+mkdir -p ~/texmf/tex/latex
+git clone <this-repository-url> ~/texmf/tex/latex/custom-classes
+```
+
+### Windows
+
+Default `TEXMFHOME` (MiKTeX): `%USERPROFILE%\texmf`
+
+```powershell
+mkdir "$env:USERPROFILE\texmf\tex\latex"
+git clone <this-repository-url> "$env:USERPROFILE\texmf\tex\latex\custom-classes"
+```
+
+With MiKTeX, you can also add a custom root folder through **MiKTeX
+Console → Settings → Directories** instead of using the default location.
+
+### Verifying the install
+
+After placing the files, confirm TeX can find them:
 
 ```sh
 kpsewhich assignment.cls
 ```
 
-If `kpsewhich` does not find the class, refresh the file database if your TeX
-installation requires it, or set `TEXINPUTS` while compiling:
+If nothing is printed, refresh your TeX installation's file name database
+(e.g. `mktexlsr` or MiKTeX Console's "Refresh file name database" button), or
+compile with `TEXINPUTS` pointed directly at the classes:
 
 ```sh
-TEXINPUTS="$HOME/texmf/tex/latex//:" pdflatex document.tex
+TEXINPUTS="/path/to/custom-classes//:" pdflatex document.tex
 ```
 
-The classes load their own dependencies, so a reasonably complete LaTeX
-installation is required. All author, course, institution, and logo details
-belong in each document, so the classes can be reused without editing their
-source files.
+## Recommended VS Code Extensions
+
+These extensions turn VS Code into a full LaTeX editor and pair well with the
+classes in this repository:
+
+- **[LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)**
+  — compiles and formats documents, renders PDF previews, and provides
+  general LaTeX language support. This is the extension used for the editor
+  completion setup below.
+- **[LaTeX](https://marketplace.visualstudio.com/items?itemName=torn4dom4n.latex-support)**
+  — adds LaTeX snippets for common environments and commands, speeding up
+  everyday writing.
+- **[LaTeX Sympy Calculator](https://marketplace.visualstudio.com/items?itemName=xyz0826.latex-sympy-calculator)**
+  — evaluates and simplifies math expressions written in LaTeX directly in
+  the editor, useful for checking work on assignments and notes.
 
 ## Editor Completion
 
@@ -53,13 +121,13 @@ commands and `pseudo` language.
 
 LaTeX Workshop can load the JSON file globally, which makes completion work in
 documents located in other repositories and directories. Add the following to
-your VS Code user `settings.json`, changing the path if your local TeX tree is
-located elsewhere:
+your VS Code user `settings.json`, replacing the path with wherever you
+installed this repository:
 
 ```json
 {
   "latex-workshop.intellisense.package.dirs": [
-    "/path/to/texmf/tex/latex/intellisense"
+    "/path/to/custom-classes/intellisense"
   ],
   "latex-workshop.intellisense.package.extra": [
     "latex-custom-classes"
@@ -75,6 +143,41 @@ or command definitions are outside the current project directory.
 The `.cwl` file is the source-format equivalent for editors such as TeXstudio.
 It can also be regenerated into the JSON format if the custom commands or
 classes change. Keep the two files synchronized when extending the repository.
+
+## Snippets
+
+`snippets/latex.code-snippets` provides prefixes (`notes`, `coverletter`,
+`latex-assignment`) that scaffold a barebones document for the corresponding
+class. VS Code cannot load user snippets from an arbitrary path, so install
+the file with one of the two options below.
+
+### Global snippets (all projects)
+
+Copy or symlink the file into your VS Code profile's snippets folder so it
+applies everywhere. Symlinking keeps it up to date when you pull changes to
+this repository.
+
+- **macOS**: `~/Library/Application Support/Code/User/snippets/`
+- **Linux**: `~/.config/Code/User/snippets/`
+- **Windows**: `%APPDATA%\Code\User\snippets\`
+
+```sh
+ln -s /path/to/custom-classes/snippets/latex.code-snippets \
+  "$HOME/Library/Application Support/Code/User/snippets/latex.code-snippets"
+```
+
+If you use a non-default VS Code profile, the folder is nested under
+`User/profiles/<profile-id>/snippets/` instead of `User/snippets/`.
+
+### Workspace snippets (single project)
+
+Copy the file into a project's `.vscode/` folder instead if you only want the
+snippets available there:
+
+```sh
+mkdir -p .vscode
+cp /path/to/custom-classes/snippets/latex.code-snippets .vscode/
+```
 
 ## Assignment Class
 
@@ -175,7 +278,7 @@ compact bold headings.
 ```latex
 \documentclass[compact,columns=2]{notes}
 
- itle{Course Notes}
+\title{Course Notes}
 \class{Course or Subject}
 \author{Your Name}
 % Optional: \titlelogo{\includegraphics[width=0.4\textwidth]{institution-logo.png}}
@@ -252,7 +355,7 @@ each section.
 ```latex
 \documentclass{presentation}
 
- itle{Presentation Title}
+\title{Presentation Title}
 \author{Your Name}
 \institute{Your Institution}
 % Optional: \logo{\includegraphics[height=0.25cm]{institution-logo.png}}
