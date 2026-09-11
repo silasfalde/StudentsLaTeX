@@ -59,22 +59,22 @@
 
 % Title
 \renewcommand{\maketitle}{{
-      \centering
-      \vspace*{1cm}
+    \centering
+    \vspace*{1cm}
 
-      \includegraphics[width=0.4\textwidth]{umich-logo.png}
-      \vspace{1cm}
+    \includegraphics[width=0.4\textwidth]{umich-logo.png}
+    \vspace{1cm}
 
-      {\Huge\bfseries \@class : \@title \par}
-      \vspace{0.5cm}
+    {\Huge\bfseries \@class : \@title \par}
+    \vspace{0.5cm}
 
-      {\Large \@author \par}
+    {\Large \@author \par}
 
-      \vfill
+    \vfill
 
-      {\large\today\par}
-      \newpage
-    }}
+    {\large\today\par}
+    \newpage
+  }}
 
 \title{Class Name}
 
@@ -88,7 +88,7 @@
   \setlength{\columnsep}{1em}
   \setlength{\columnwidth}{0.3\textwidth}
   \AtBeginDocument{\begin{multicols*}{\the\notes@columns}}
-      \AtEndDocument{\end{multicols*}}
+  \AtEndDocument{\end{multicols*}}
   \setlist[itemize]{leftmargin=1em,itemsep=-5pt plus 1fill}
   \setlist[enumerate]{leftmargin=1em,itemsep=-5pt plus 1fill}
   \renewcommand{\part}[1]{} % make the part command do nothing

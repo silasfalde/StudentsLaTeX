@@ -54,13 +54,13 @@ commands and `pseudo` language.
 
 LaTeX Workshop can load the JSON file globally, which makes completion work in
 documents located in other repositories and directories. Add the following to
-your VS Code user `settings.json`, changing the path if this repository is
+your VS Code user `settings.json`, changing the path if your local TeX tree is
 located elsewhere:
 
 ```json
 {
   "latex-workshop.intellisense.package.dirs": [
-    "/home/silas-falde/texmf/tex/latex/latex_custom_classes/intellisense"
+    "/Users/silasfalde/Library/texmf/tex/latex/intellisense"
   ],
   "latex-workshop.intellisense.package.extra": [
     "latex-custom-classes"
