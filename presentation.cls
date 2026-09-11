@@ -17,12 +17,7 @@
 \input{math-commands}
 \input{programming-commands}
 
-\author{Silas Falde}
-\institute{University of Michigan}
-\logo{\raisebox{-0.3cm}{\includegraphics[height=0.25cm]{umich-logo.png}}}
-
 \usetheme{Berlin}
-\usecolortheme{wolverine}
 \usetikzlibrary{shapes.symbols}
 
 \AtBeginSection[]

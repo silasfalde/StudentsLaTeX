@@ -35,14 +35,13 @@ If `kpsewhich` does not find the class, refresh the file database if your TeX
 installation requires it, or set `TEXINPUTS` while compiling:
 
 ```sh
-TEXINPUTS="$HOME/texmf/tex/latex/latex_custom_classes//:" pdflatex document.tex
+TEXINPUTS="$HOME/texmf/tex/latex//:" pdflatex document.tex
 ```
 
 The classes load their own dependencies, so a reasonably complete LaTeX
-installation is required. The `essay`, `notes`, and `presentation` classes
-expect an `umich-logo.png` file when their title pages are created. Put that
-file in the document directory or make it available through TeX's search
-path.
+installation is required. All author, course, institution, and logo details
+belong in each document, so the classes can be reused without editing their
+source files.
 
 ## Editor Completion
 
@@ -60,7 +59,7 @@ located elsewhere:
 ```json
 {
   "latex-workshop.intellisense.package.dirs": [
-    "/Users/silasfalde/Library/texmf/tex/latex/intellisense"
+    "/path/to/texmf/tex/latex/intellisense"
   ],
   "latex-workshop.intellisense.package.extra": [
     "latex-custom-classes"
@@ -145,14 +144,14 @@ The assignment class automatically loads `amsmath`, `amssymb`, `amsthm`,
 
 Use `essay` for essays with a title page. It is based on `article`, uses
 three-quarter-inch margins, and formats `\maketitle` as a dedicated title
-page with the University of Michigan logo.
+page.
 
 ```latex
 \documentclass{essay}
 
 \title{An Essay Title}
-\class{English 101}
 \author{Your Name}
+% Optional: \titlelogo{\includegraphics[width=0.4\textwidth]{institution-logo.png}}
 
 \begin{document}
 \maketitle
@@ -164,8 +163,8 @@ Your essay begins here.
 ```
 
 The class loads `parskip`, `array`, `ifthen`, `graphicx`, `geometry`,
-`amsmath`, `spacingtricks`, `pdflscape`, and `hyperref`. Its title page uses
-`umich-logo.png` at `0.4\textwidth`.
+`amsmath`, `spacingtricks`, `pdflscape`, and `hyperref`. Add an optional
+document-specific title logo with `\titlelogo{...}`.
 
 ## Notes Class
 
@@ -176,9 +175,10 @@ compact bold headings.
 ```latex
 \documentclass[compact,columns=2]{notes}
 
-\title{Probability Notes}
-\class{Statistics}
+ itle{Course Notes}
+\class{Course or Subject}
 \author{Your Name}
+% Optional: \titlelogo{\includegraphics[width=0.4\textwidth]{institution-logo.png}}
 
 \begin{document}
 \maketitle
@@ -199,7 +199,8 @@ These are my notes.
 
 The notes class loads `tcolorbox`, `stmaryrd`, `amsmath`, `amssymb`,
 `enumitem`, `titlesec`, `xcolor`, `graphicx`, and `geometry`, along with both
-shared command files. The normal title page includes `umich-logo.png`.
+shared command files. Add an optional document-specific title logo with
+`\titlelogo{...}`.
 
 ## Cover Letter Class
 
@@ -245,14 +246,16 @@ The class also accepts options supported by `letter` and loads `graphicx`,
 ## Presentation Class
 
 Use `presentation` for Beamer slides. It is based on `beamer`, uses the
-`Berlin` theme and `wolverine` color theme, and inserts a table-of-contents
-frame at the beginning of each section.
+`Berlin` theme, and inserts a table-of-contents frame at the beginning of
+each section.
 
 ```latex
 \documentclass{presentation}
 
-\title{Probability}
+ itle{Presentation Title}
 \author{Your Name}
+\institute{Your Institution}
+% Optional: \logo{\includegraphics[height=0.25cm]{institution-logo.png}}
 
 \begin{document}
 
@@ -269,10 +272,10 @@ frame at the beginning of each section.
 \end{document}
 ```
 
-The class sets the institute to `University of Michigan`, adds a small
-`umich-logo.png` logo, removes Beamer navigation symbols, and loads
-`amsthm`, `amsmath`, `amssymb`, `xcolor`, `geometry`, `graphicx`, `csvsimple`,
-`tikz`, and `inputenc`. It also loads both shared command files.
+The class removes Beamer navigation symbols and loads `amsthm`, `amsmath`,
+`amssymb`, `xcolor`, `geometry`, `graphicx`, `csvsimple`, `tikz`, and
+`inputenc`. It also loads both shared command files. Set `\institute{...}`
+and `\logo{...}` in an individual document when needed.
 
 ## Shared Command Files
 

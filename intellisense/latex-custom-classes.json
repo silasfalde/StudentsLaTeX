@@ -16,6 +16,13 @@
             }
         },
         {
+            "name": "titlelogo",
+            "arg": {
+                "format": "{}",
+                "snippet": "titlelogo{${1:logo content}}"
+            }
+        },
+        {
             "name": "headerlogo",
             "arg": {
                 "format": "{}",

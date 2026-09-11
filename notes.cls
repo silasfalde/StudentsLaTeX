@@ -33,8 +33,10 @@
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
 
 % Names
-\newcommand{\class}[1]{\newcommand{\@class}{#1}}
-\author{Silas Falde}
+\newcommand{\@class}{}
+\newcommand{\class}[1]{\renewcommand{\@class}{#1}}
+\newcommand{\@titlelogo}{}
+\newcommand{\titlelogo}[1]{\renewcommand{\@titlelogo}{#1}}
 
 % Chapters
 \titleformat{\chapter}{\normalfont\large\bfseries}{\thechapter}{0.5em}{}[\titlerule]
@@ -62,10 +64,14 @@
     \centering
     \vspace*{1cm}
 
-    \includegraphics[width=0.4\textwidth]{umich-logo.png}
-    \vspace{1cm}
+    \ifx\@titlelogo\@empty\else
+      \@titlelogo
+      \vspace{1cm}
+    \fi
 
-    {\Huge\bfseries \@class : \@title \par}
+    {\Huge\bfseries
+      \ifx\@class\@empty\else\@class : \fi
+      \@title \par}
     \vspace{0.5cm}
 
     {\Large \@author \par}
@@ -75,8 +81,6 @@
     {\large\today\par}
     \newpage
   }}
-
-\title{Class Name}
 
 \if@compact
   \usepackage{mathptmx}

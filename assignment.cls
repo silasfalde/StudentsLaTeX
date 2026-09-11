@@ -34,8 +34,8 @@
 \input{programming-commands}
 
 % Variables
-\author{Silas Falde}
-\newcommand{\class}[1]{\newcommand{\@class}{#1}}
+\newcommand{\@class}{}
+\newcommand{\class}[1]{\renewcommand{\@class}{#1}}
 
 % Page layout
 \geometry{margin=1in}
@@ -79,7 +79,9 @@
 \renewcommand{\maketitle}{
   \begin{center}
     \LARGE\@title\vspace{1em}\\
-    \Large\@class\vspace{1em}\\
+    \ifx\@class\@empty\else
+      \Large\@class\vspace{1em}\\
+    \fi
     \normalsize\@author\vspace{1em}\\
     \normalsize\today
   \end{center}

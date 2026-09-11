@@ -7,7 +7,6 @@
 %% styling, optional header logos, and formatted contact information.
 %% Based on the standard letter class with additional formatting features.
 %%
-%% AUTHOR: lp586@cam.ac.uk
 %% DATE: 2024/11/16
 %%
 %% ============================================================================
@@ -57,7 +56,7 @@
 %% ============================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{coverletter}[2024/11/16 cover letter style, lp586@cam.ac.uk]
+\ProvidesClass{coverletter}[2024/11/16 cover letter style]
 
 %% Based on the eletter2 class
 %% https://www.overleaf.com/latex/templates/ntu-eee-letterhead/qfxzzmxfpcnq

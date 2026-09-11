@@ -10,6 +10,7 @@
 
 # Class commands
 \class{class name}
+	itlelogo{logo content}
 \headerlogo{logo content}
 \manuscript{title}{details}
 \suggestedref{name}{title or affiliation}{email}
