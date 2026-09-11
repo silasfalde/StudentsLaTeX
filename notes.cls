@@ -65,7 +65,7 @@
       \includegraphics[width=0.4\textwidth]{umich-logo.png}
       \vspace{1cm}
 
-      {\Huge\bfseries \@class \ -- \@title \par}
+      {\Huge\bfseries \@class : \@title \par}
       \vspace{0.5cm}
 
       {\Large \@author \par}
@@ -75,6 +75,8 @@
       {\large\today\par}
       \newpage
     }}
+
+\title{Class Name}
 
 \if@compact
   \usepackage{mathptmx}
