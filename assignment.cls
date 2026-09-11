@@ -44,6 +44,14 @@
 % Sections
 \titleformat{\section}[block]{\if@newpages\clearpage\fi\normalfont\Large\bfseries}{\thesection}{1em}{}
 
+% Problem statements
+\newenvironment{problem}
+{\par\noindent\textbf{Problem.}\par\noindent}
+{\par}
+\newenvironment{context}
+{\begin{problem}}
+  {\end{problem}}
+
 % Subsections
 \renewcommand{\thesubsection}{\thesection.\if@arabicsubsec\arabic{subsection}\else\Alph{subsection}\fi}
 \titleformat{\subsection}[block]{\normalfont\large\bfseries}{\thesubsection)}{0.5em}{}
