@@ -9,6 +9,7 @@
             "",
             "\\class{${1:Class ID}}",
             "\\title{${2:Class name}}",
+            "\\author{${3:Your Name}}",
             "",
             "\\begin{document}",
             "\\maketitle",
@@ -54,12 +55,13 @@
     },
     "Initialize Assignment Document": {
         "scope": "latex",
-        "prefix": "latex-assignment",
+        "prefix": "assignment",
         "body": [
             "\\documentclass{assignment}",
             "",
             "\\class{${1:Class ID}}",
-            "\\title{${2:Homework 1}}",
+            "\\title{${2:Title}}",
+            "\\author{${3:Your Name}}",
             "",
             "\\begin{document}",
             "\\maketitle",
