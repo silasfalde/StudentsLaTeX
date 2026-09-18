@@ -23,7 +23,7 @@
 \diff
 \prob
 \stddev
-\expectation
+\expect
 \variance
 \entropy
 \infoGain

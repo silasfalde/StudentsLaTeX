@@ -53,7 +53,7 @@
             "name": "stddev"
         },
         {
-            "name": "expectation"
+            "name": "expect"
         },
         {
             "name": "variance"
