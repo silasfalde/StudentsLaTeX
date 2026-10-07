@@ -52,6 +52,11 @@
 \newenvironment{context}
 {\begin{problem}}
 {\end{problem}}
+\newenvironment{solution}
+{\paragraph{Solution.}}
+{}
+
+
 
 % Subsections
 \renewcommand{\thesubsection}{\thesection.\if@arabicsubsec\arabic{subsection}\else\Alph{subsection}\fi}
