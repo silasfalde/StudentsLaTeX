@@ -219,8 +219,8 @@ The class also accepts options supported by the underlying article class.
 
 ### Problem statements
 
-The optional `problem` environment places an unnumbered statement in a
-light-gray, page-breakable card, visually separating it from its solution:
+The optional `problem` environment places an unnumbered statement between two horizontal rules under a bold
+"Problem" label. It uses no box, so lists, tables, and page breaks work freely:
 
 ```latex
 \begin{problem}
