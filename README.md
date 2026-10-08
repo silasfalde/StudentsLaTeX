@@ -15,6 +15,9 @@ scratch.
 | `notes.cls` | Chaptered course notes, including a compact layout for automatic exam note generation |
 | `coverletter.cls` | Professional cover letters |
 | `presentation.cls` | Beamer slide decks |
+| `studentstyle.sty` | Shared style guide: deep green palette, Libertinus fonts, `microtype`, `hyperref`/`cleveref` setup |
+| `studentlayout.sty` | Shared layout for `notes`, `assignment`, and `essay`: metadata commands, title page, running header, and heading styles |
+| `studentboxes.sty` | Shared boxed `definition`, `theorem`, `lemma`, `proposition`, `corollary`, `example`, `remark`, `note`, `warning`, and `proof` environments |
 | `math-commands.tex` | Shared math/statistics notation, loaded by the classes above |
 | `programming-commands.tex` | Shared code-listing style and a `pseudo` language, loaded by the classes above |
 | `intellisense/` | Editor completion metadata for the custom commands and environments |
@@ -115,9 +118,11 @@ classes in this repository:
 
 The `intellisense` directory contains completion metadata for the custom
 commands and environments in this repository. It includes the class commands
-(`\class`, `\headerlogo`, `\manuscript`, and `\suggestedref`), the `problem`
-and `context` environments, the shared math commands, and the listings
-commands and `pseudo` language.
+(`\class`, `\titlelogo`, `\subtitle`, `\instructor`, `\term`, `\headerlogo`,
+`\manuscript`, and `\suggestedref`), `\cref`, the boxed environments
+(`definition`, `theorem`, `proof`, and so on), the `problem`, `context`, and
+`solution` environments, the shared math commands, and the listings commands
+and `pseudo` language.
 
 LaTeX Workshop can load the JSON file globally, which makes completion work in
 documents located in other repositories and directories. Add the following to
@@ -137,19 +142,40 @@ installed this repository:
 
 Restart or reload VS Code after changing the settings. The completion data is
 loaded for every LaTeX project, so typing `\problem`, `\begin{problem}`, or
-commands such as `\expectation` will provide suggestions even when the class
+commands such as `\expect` will provide suggestions even when the class
 or command definitions are outside the current project directory.
 
-The `.cwl` file is the source-format equivalent for editors such as TeXstudio.
-It can also be regenerated into the JSON format if the custom commands or
-classes change. Keep the two files synchronized when extending the repository.
+### Updating completion data
+
+`intellisense/latex-custom-classes.cwl` is the source of truth. Do not edit
+the JSON by hand. After adding, renaming, or removing a command or
+environment:
+
+1. Edit `latex-custom-classes.cwl`. Each line is a macro (`\name{placeholder}`)
+   or an environment (`\begin{name}[placeholder]`). The text inside `[]`,
+   `{}`, or `||` becomes the tab-stop placeholder. `#` lines are comments.
+2. Run `python3 intellisense/generate-json.py` to regenerate
+   `latex-custom-classes.json`. Run it with `--check` to confirm the JSON is
+   up to date.
+3. Reload VS Code.
+
+The `.cwl` file can also be used directly by editors such as TeXstudio.
 
 ## Snippets
 
-`snippets/latex.code-snippets` provides prefixes (`notes`, `coverletter`,
-`latex-assignment`) that scaffold a barebones document for the corresponding
-class. VS Code cannot load user snippets from an arbitrary path, so install
-the file with one of the two options below.
+`snippets/latex.code-snippets` provides document prefixes (`notes`,
+`cheatsheet`, `assignment`, `essay`, `presentation`, `coverletter`) that
+scaffold a document for the corresponding class, and environment prefixes
+for the boxed environments (`defn`, `thm`, `lem`, `prop`, `cor`, `exm`,
+`rmk`, `nte`, `wrn`, `prf`). VS Code cannot load user snippets from an
+arbitrary path, so install the file with one of the two options below.
+
+To add or change a snippet, edit `snippets/latex.code-snippets` directly. Each
+entry has a `prefix` (what you type), a `body` (one string per line), and a
+`description`. Use `${1:placeholder}` for tab stops and `$0` for the final
+cursor position. Backslashes must be doubled (`\\begin`, and `\\\\` for a
+LaTeX line break). The file allows `//` comments. Reload VS Code if a change
+does not appear.
 
 ### Global snippets (all projects)
 
@@ -183,7 +209,9 @@ cp /path/to/custom-classes/snippets/latex.code-snippets .vscode/
 
 Use `assignment` for homework and problem sets. It is based on the standard
 `article` class and sets one-inch margins, no paragraph indentation, and a
-small paragraph gap.
+small paragraph gap. It follows the shared style: a ruled title block, green
+section headings, a running header, and the boxed environments described under
+[Shared Style](#shared-style).
 
 ```latex
 \documentclass[arabicsubsec]{assignment}
@@ -199,7 +227,7 @@ small paragraph gap.
 
 \begin{problem}
 Suppose you roll a die and let $X$ be the number of spots. What is
-$\expectation[X]$?
+$\expect[X]$?
 \end{problem}
 
 The solution goes here.
@@ -214,24 +242,28 @@ The solution goes here.
   subsection labels use capital letters, such as `1.A`.
 - `arabicsubsubsec`: number subsubsections with Arabic numerals. Without it,
   subsubsection labels use uppercase Roman numerals.
+- `nobox`: draw the theorem-style environments as plain headed paragraphs.
 
 The class also accepts options supported by the underlying article class.
 
 ### Problem statements
 
-The optional `problem` environment places an unnumbered statement between two horizontal rules under a bold
-"Problem" label. It uses no box, so lists, tables, and page breaks work freely:
+The optional `problem` environment places an unnumbered statement under a
+green "Problem." label. The optional `solution` environment adds a lighter
+green "Solution." label. Neither uses a box, so lists, tables, and page breaks
+work freely:
 
 ```latex
 \begin{problem}
 What are the possible values of $Z$? What is the probability of each value?
 \end{problem}
-
+\begin{solution}
 Here is the solution.
+\end{solution}
 ```
 
-`context` is an equivalent alias when the introductory material is better
-described as context:
+`context` is an equivalent alias for `problem` when the introductory material
+is better described as context:
 
 ```latex
 \begin{context}
@@ -240,20 +272,24 @@ Let $X$ be the outcome of a die roll.
 ```
 
 The assignment class automatically loads `amsmath`, `amssymb`, `amsthm`,
-`siunitx`, `graphicx`, `csvsimple`, `titlesec`, `enumerate`, `xcolor`, and
-`hyperref`. It also loads both shared command files described below.
+`siunitx`, `graphicx`, `csvsimple`, `titlesec`, `enumerate`, `enumitem`,
+`tcolorbox`, `xcolor`, `hyperref`, and `cleveref`. It also loads both shared
+command files described below.
 
 ## Essay Class
 
 Use `essay` for essays with a title page. It is based on `article`, uses
-three-quarter-inch margins, and formats `\maketitle` as a dedicated title
-page.
+three-quarter-inch margins, formats `\maketitle` as a dedicated title page,
+and follows the shared style: green headings, Libertinus fonts, and a running
+header with the class name and title. Options are passed to `article`, so
+`11pt` or `12pt` work.
 
 ```latex
 \documentclass{essay}
 
 \title{An Essay Title}
 \author{Your Name}
+% Optional: \class{Course} \subtitle{...} \instructor{...} \term{Fall 2026}
 % Optional: \titlelogo{\includegraphics[width=0.4\textwidth]{institution-logo.png}}
 
 \begin{document}
@@ -266,14 +302,17 @@ Your essay begins here.
 ```
 
 The class loads `parskip`, `array`, `ifthen`, `graphicx`, `geometry`,
-`amsmath`, `spacingtricks`, `pdflscape`, and `hyperref`. Add an optional
-document-specific title logo with `\titlelogo{...}`.
+`amsmath`, `spacingtricks`, `pdflscape`, `titlesec`, `hyperref`, and
+`cleveref`.
 
 ## Notes Class
 
 Use `notes` for longer notes organized with chapters. It is based on
-`extreport`, uses one-inch margins, and formats chapters and sections as
-compact bold headings.
+`extreport`, uses one-inch margins, and follows the shared style
+(`studentstyle`): black small-caps chapter headings with a rule, green section
+headings and lighter green subsections, Libertinus fonts, a running header
+and page-number footer, and
+boxed theorem-style environments (`studentboxes`).
 
 ```latex
 \documentclass[compact,columns=2]{notes}
@@ -281,6 +320,7 @@ compact bold headings.
 \title{Course Notes}
 \class{Course or Subject}
 \author{Your Name}
+% Optional: \subtitle{...} \instructor{...} \term{Fall 2026} \date{...}
 % Optional: \titlelogo{\includegraphics[width=0.4\textwidth]{institution-logo.png}}
 
 \begin{document}
@@ -290,20 +330,40 @@ compact bold headings.
 \section{Events}
 These are my notes.
 
+\begin{definition}[Name]\label{def:name}
+A boxed definition.
+\end{definition}
+
+\begin{theorem}[Name]
+A boxed theorem, referenced with \cref{def:name}.
+\end{theorem}
+\begin{proof}
+Ends with a green square.
+\end{proof}
+
 \end{document}
 ```
 
 ### Notes options
 
-- `compact`: use a very compact two-column layout, remove page numbering,
-  reduce margins to `0.2in`, and tighten list spacing.
+- `compact`: use a very compact two-column layout, remove page numbering and
+  headers, reduce margins to `0.2in`, use Times fonts, draw the theorem-style
+  environments without boxes, and tighten list spacing.
 - `columns=<number>`: choose the number of columns used with `compact`. The
   default is `2`.
+- `nobox`: draw the theorem-style environments as plain headed paragraphs.
+
+### Environments
+
+`definition`, `theorem`, `lemma`, `proposition`, `corollary`, and `example`
+share one counter numbered within chapters (for example, Theorem 2.3).
+`remark`, `note`, and `warning` are unnumbered. All accept an optional name,
+such as `\begin{theorem}[Cramér--Rao]`, and work with `\label` and `\cref`.
 
 The notes class loads `tcolorbox`, `stmaryrd`, `amsmath`, `amssymb`,
-`enumitem`, `titlesec`, `xcolor`, `graphicx`, and `geometry`, along with both
-shared command files. Add an optional document-specific title logo with
-`\titlelogo{...}`.
+`enumitem`, `titlesec`, `xcolor`, `graphicx`, `geometry`, `hyperref`, and
+`cleveref`, along with both shared command files. Add an optional
+document-specific title logo with `\titlelogo{...}`.
 
 ## Cover Letter Class
 
@@ -344,7 +404,9 @@ I am writing to apply for the position of ...
   referee and a linked email address.
 
 The class also accepts options supported by `letter` and loads `graphicx`,
-`ulem`, `enumerate`, `hyperref`, and `geometry`.
+`ulem`, `enumerate`, `hyperref`, and `geometry`. It uses the shared fonts and
+accent colour: a thin green rule under the sender block, and green position
+titles, referee names, and links.
 
 ## Presentation Class
 
@@ -375,10 +437,59 @@ each section.
 \end{document}
 ```
 
-The class removes Beamer navigation symbols and loads `amsthm`, `amsmath`,
+The class removes Beamer navigation symbols, uses serif Libertinus fonts, and
+recolours the `Berlin` theme and blocks with the shared green palette. It loads `amsthm`, `amsmath`,
 `amssymb`, `xcolor`, `geometry`, `graphicx`, `csvsimple`, `tikz`, and
 `inputenc`. It also loads both shared command files. Set `\institute{...}`
-and `\logo{...}` in an individual document when needed.
+and `\logo{...}` in an individual document when needed. Beamer provides its
+own `theorem`, `definition`, and `example` blocks, so `studentboxes` is not
+loaded.
+
+## Shared Style
+
+All classes follow one style guide, implemented in three shared packages:
+
+| Package | Contents |
+| --- | --- |
+| `studentstyle.sty` | Colour palette, fonts, `microtype`, and the `\StudentsLoadLinks` / `\StudentsLoadCleveref` loaders |
+| `studentlayout.sty` | `\class`, `\titlelogo`, `\subtitle`, `\instructor`, `\term`, `\StudentsTitlePage`, `\StudentsRunningHeader`, and `\StudentsHeadings` |
+| `studentboxes.sty` | The boxed theorem-style environments and `proof` |
+
+The look is classic academic: Libertinus serif text and math, a deep green
+accent, small-caps chapter titles, and coloured boxes with a bar on the left.
+Headings follow a fixed colour scheme: chapters are black, sections use the
+full accent colour, and subsections and deeper levels use a lighter tint
+(`studentsaccentsoft`).
+
+### Changing the style
+
+- **Accent colour:** edit `studentsgreen` in `studentstyle.sty`. The accent
+  (`studentsaccent`), its light tint used in boxes (`studentsaccentlight`), and
+  the lighter heading tint (`studentsaccentsoft`, the accent mixed with white)
+  are derived from the `\colorlet` lines just below. The `Berlin` colours in
+  `presentation.cls` also use the accent.
+- **Box colours:** the brown, slate, gold, and red pairs (full and light) are
+  defined in `studentstyle.sty` and assigned to environments in
+  `studentboxes.sty`.
+- **Lighter or darker subsections:** change the percentage in
+  `\colorlet{studentsaccentsoft}{studentsgreen!72!white}`.
+- **Fonts:** change the font packages in `studentstyle.sty`. pdfLaTeX uses
+  `libertinus-type1` with `libertinust1math`, and XeLaTeX or LuaLaTeX use
+  `libertinus-otf`. The `ptm` option switches to Times, which `notes` uses in
+  `compact` mode.
+- **Title page, running header, and heading sizes:** edit
+  `studentlayout.sty`. Change `notes.cls` for notes-only chapter formatting.
+- **Boxes:** edit `\students@box` in `studentboxes.sty` for the frame, padding,
+  and spacing, or add an environment next to the others there. Remember to add
+  new environments and commands to `intellisense/latex-custom-classes.cwl` and
+  to `snippets/latex.code-snippets`.
+- **New class:** load `studentstyle` (and `studentlayout` or `studentboxes` as
+  needed), call `\StudentsLoadLinks` last, and keep headings in the accent
+  colours.
+
+The `compact` option of `notes` is deliberately separate from the style: it
+keeps the Times fonts, drops the header and boxes, and uses the same accent
+colours for headings and bullets.
 
 ## Shared Command Files
 
