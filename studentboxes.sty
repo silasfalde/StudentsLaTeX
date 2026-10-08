@@ -1,0 +1,84 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{studentboxes}[2026/10/08 v1.0 Theorem-style boxed environments]
+
+% Options:
+%   nobox  plain headed paragraphs instead of boxes (no frames or backgrounds)
+\newif\ifstudentboxes@nobox
+\DeclareOption{nobox}{\studentboxes@noboxtrue}
+\DeclareOption*{\PackageWarning{studentboxes}{Unknown option `\CurrentOption'}}
+\ProcessOptions\relax
+
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+
+% \students@defstyle{name}{color}: amsthm style with a colored bold head
+\newcommand{\students@defstyle}[2]{%
+  \newtheoremstyle{#1}{0pt}{0pt}{\normalfont}{0pt}%
+    {\bfseries\color{#2}}{.}{0.5em}%
+    {\thmname{##1}\thmnumber{ ##2}\thmnote{\normalfont\ (##3)}}%
+}
+
+% \students@box{environment}{color}{light color}
+\newcommand{\students@box}[3]{%
+  \ifstudentboxes@nobox
+    \relax
+  \else
+    \tcolorboxenvironment{#1}{%
+      enhanced jigsaw, breakable, sharp corners,
+      colback=#3, colframe=#2, boxrule=0pt,
+      borderline west={2.5pt}{0pt}{#2},
+      left=0.8em, right=0.8em, top=0.5em, bottom=0.5em,
+      before skip=0.8em plus 0.2em, after skip=0.8em plus 0.2em,
+      parbox=false
+    }%
+  \fi
+}
+
+% Numbered statements share one counter, numbered within chapters when the
+% class has them and otherwise within sections.
+\@ifundefined{c@chapter}{\def\students@within{section}}{\def\students@within{chapter}}
+
+\students@defstyle{studentsdef}{studentsaccent}
+\students@defstyle{studentsthm}{studentsbrown}
+\students@defstyle{studentsex}{studentsslate}
+\students@defstyle{studentsrem}{studentsslate}
+\students@defstyle{studentsnote}{studentsgold}
+\students@defstyle{studentswarn}{studentsred}
+
+\theoremstyle{studentsdef}
+\newtheorem{definition}{Definition}[\students@within]
+\students@box{definition}{studentsaccent}{studentsaccentlight}
+
+\theoremstyle{studentsthm}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\students@box{theorem}{studentsbrown}{studentsbrownlight}
+\students@box{lemma}{studentsbrown}{studentsbrownlight}
+\students@box{proposition}{studentsbrown}{studentsbrownlight}
+\students@box{corollary}{studentsbrown}{studentsbrownlight}
+
+\theoremstyle{studentsex}
+\newtheorem{example}[definition]{Example}
+\students@box{example}{studentsslate}{studentsslatelight}
+
+\theoremstyle{studentsrem}
+\newtheorem*{remark}{Remark}
+\students@box{remark}{studentsslate}{studentsslatelight}
+
+\theoremstyle{studentsnote}
+\newtheorem*{note}{Note}
+\students@box{note}{studentsgold}{studentsgoldlight}
+
+\theoremstyle{studentswarn}
+\newtheorem*{warning}{Warning}
+\students@box{warning}{studentsred}{studentsredlight}
+
+% Proofs
+\renewcommand{\proofname}{\normalfont\itshape Proof}
+\renewcommand{\qedsymbol}{\textcolor{studentsaccent}{\ensuremath{\blacksquare}}}
+
+\endinput

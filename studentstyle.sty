@@ -1,0 +1,56 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{studentstyle}[2026/10/08 v1.0 Shared palette, fonts, and links for the custom classes]
+
+% Options:
+%   ptm  use Times (mathptmx) instead of Libertinus, for dense layouts
+\newif\ifstudentstyle@ptm
+\DeclareOption{ptm}{\studentstyle@ptmtrue}
+\DeclareOption*{\PackageWarning{studentstyle}{Unknown option `\CurrentOption'}}
+\ProcessOptions\relax
+
+\RequirePackage{xcolor}
+\RequirePackage{amsmath}
+
+% Palette: deep green accent with warm neutrals
+\definecolor{studentsgreen}{HTML}{1E4D2B}
+\definecolor{studentsgreenlight}{HTML}{E8F0EA}
+\definecolor{studentsbrown}{HTML}{7A4B1E}
+\definecolor{studentsbrownlight}{HTML}{F4ECE2}
+\definecolor{studentsslate}{HTML}{3F4A54}
+\definecolor{studentsslatelight}{HTML}{EEF0F2}
+\definecolor{studentsgold}{HTML}{8A6A00}
+\definecolor{studentsgoldlight}{HTML}{FAF3DC}
+\definecolor{studentsred}{HTML}{8C2F2F}
+\definecolor{studentsredlight}{HTML}{F8E9E7}
+
+\colorlet{studentsaccent}{studentsgreen}
+\colorlet{studentsaccentlight}{studentsgreenlight}
+\colorlet{studentsaccentsoft}{studentsgreen!72!white}
+
+% Fonts: Libertinus (pdfLaTeX uses Type 1 fonts, XeTeX/LuaTeX use OpenType)
+\RequirePackage{iftex}
+\ifstudentstyle@ptm
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage{mathptmx}
+\else
+  \iftutex
+    \RequirePackage{libertinus-otf}
+  \else
+    \RequirePackage[T1]{fontenc}
+    \RequirePackage{libertinus-type1}
+    \RequirePackage{libertinust1math}
+  \fi
+\fi
+\RequirePackage{microtype}
+
+% Call \StudentsLoadLinks after all other packages, and \StudentsLoadCleveref
+% after that when \cref is wanted.
+\newcommand{\StudentsLoadLinks}{%
+  \RequirePackage[colorlinks=true, linkcolor=studentsaccent,
+    citecolor=studentsaccent, urlcolor=studentsaccent]{hyperref}%
+}
+\newcommand{\StudentsLoadCleveref}{%
+  \RequirePackage[capitalize,nameinlink]{cleveref}%
+}
+
+\endinput
