@@ -1,6 +1,10 @@
 {
     // Global/workspace LaTeX snippets. Every entry is scoped to "latex" so it
     // does not interfere with other languages when installed globally.
+    // Placeholders: ${1:text} is a tab stop, $0 is the final cursor position,
+    // and a backslash must be written as \\ (two as \\\\).
+
+    // ---- Documents ----
     "Initialize Notes Document": {
         "scope": "latex",
         "prefix": "notes",
@@ -10,16 +14,104 @@
             "\\class{${1:Class ID}}",
             "\\title{${2:Class name}}",
             "\\author{${3:Your Name}}",
+            "% Optional: \\subtitle{} \\instructor{} \\term{} \\titlelogo{}",
             "",
             "\\begin{document}",
             "\\maketitle",
             "\\tableofcontents",
             "",
+            "\\chapter{${4:Chapter}}",
             "$0",
             "",
             "\\end{document}"
         ],
-        "description": "Initialize a barebones LaTeX notes document"
+        "description": "Initialize a LaTeX notes document"
+    },
+    "Initialize Cheat Sheet Document": {
+        "scope": "latex",
+        "prefix": "cheatsheet",
+        "body": [
+            "\\documentclass[compact,columns=${1:3}]{notes}",
+            "",
+            "\\begin{document}",
+            "",
+            "\\chapter{${2:Chapter}}",
+            "$0",
+            "",
+            "\\end{document}"
+        ],
+        "description": "Initialize a compact multi-column notes document for exam cheat sheets"
+    },
+    "Initialize Assignment Document": {
+        "scope": "latex",
+        "prefix": "assignment",
+        "body": [
+            "\\documentclass{assignment}",
+            "",
+            "\\class{${1:Class ID}}",
+            "\\title{${2:Title}}",
+            "\\author{${3:Your Name}}",
+            "",
+            "\\begin{document}",
+            "\\maketitle",
+            "",
+            "\\section{${4:Problem Set}}",
+            "\\begin{problem}",
+            "    ${5:Problem statement.}",
+            "\\end{problem}",
+            "\\begin{solution}",
+            "    $0",
+            "\\end{solution}",
+            "",
+            "\\end{document}"
+        ],
+        "description": "Initialize a LaTeX assignment document"
+    },
+    "Initialize Essay Document": {
+        "scope": "latex",
+        "prefix": "essay",
+        "body": [
+            "\\documentclass{essay}",
+            "",
+            "\\class{${1:Class ID}}",
+            "\\title{${2:Title}}",
+            "\\author{${3:Your Name}}",
+            "",
+            "\\begin{document}",
+            "\\maketitle",
+            "",
+            "\\section{${4:Introduction}}",
+            "$0",
+            "",
+            "\\end{document}"
+        ],
+        "description": "Initialize a LaTeX essay document"
+    },
+    "Initialize Presentation Document": {
+        "scope": "latex",
+        "prefix": "presentation",
+        "body": [
+            "\\documentclass{presentation}",
+            "",
+            "\\title{${1:Title}}",
+            "\\author{${2:Your Name}}",
+            "\\institute{${3:Institution}}",
+            "",
+            "\\begin{document}",
+            "",
+            "\\begin{frame}",
+            "    \\titlepage",
+            "\\end{frame}",
+            "",
+            "\\section{${4:Section}}",
+            "",
+            "\\begin{frame}{${5:Frame title}}",
+            "    $0",
+            "\\end{frame}",
+            "",
+            "\\end{document}"
+        ],
+        "description": "Initialize a Beamer presentation document"
     },
     "Initialize Cover Letter": {
         "scope": "latex",
@@ -53,24 +145,106 @@
         ],
         "description": "Initialize a cover letter using the coverletter document class"
     },
-    "Initialize Assignment Document": {
+
+    // ---- Boxed environments (studentboxes) ----
+    "Definition Box": {
         "scope": "latex",
-        "prefix": "assignment",
+        "prefix": "defn",
         "body": [
-            "\\documentclass{assignment}",
-            "",
-            "\\class{${1:Class ID}}",
-            "\\title{${2:Title}}",
-            "\\author{${3:Your Name}}",
-            "",
-            "\\begin{document}",
-            "\\maketitle",
-            "\\tableofcontents",
-            "",
-            "$0",
-            "",
-            "\\end{document}"
+            "\\begin{definition}[${1:Name}]",
+            "    $0",
+            "\\end{definition}"
         ],
-        "description": "Initialize a barebones LaTeX assignment document"
+        "description": "Boxed definition"
+    },
+    "Theorem Box": {
+        "scope": "latex",
+        "prefix": "thm",
+        "body": [
+            "\\begin{theorem}[${1:Name}]",
+            "    $0",
+            "\\end{theorem}"
+        ],
+        "description": "Boxed theorem"
+    },
+    "Lemma Box": {
+        "scope": "latex",
+        "prefix": "lem",
+        "body": [
+            "\\begin{lemma}[${1:Name}]",
+            "    $0",
+            "\\end{lemma}"
+        ],
+        "description": "Boxed lemma"
+    },
+    "Proposition Box": {
+        "scope": "latex",
+        "prefix": "prop",
+        "body": [
+            "\\begin{proposition}[${1:Name}]",
+            "    $0",
+            "\\end{proposition}"
+        ],
+        "description": "Boxed proposition"
+    },
+    "Corollary Box": {
+        "scope": "latex",
+        "prefix": "cor",
+        "body": [
+            "\\begin{corollary}[${1:Name}]",
+            "    $0",
+            "\\end{corollary}"
+        ],
+        "description": "Boxed corollary"
+    },
+    "Example Box": {
+        "scope": "latex",
+        "prefix": "exm",
+        "body": [
+            "\\begin{example}[${1:Name}]",
+            "    $0",
+            "\\end{example}"
+        ],
+        "description": "Boxed example"
+    },
+    "Remark Box": {
+        "scope": "latex",
+        "prefix": "rmk",
+        "body": [
+            "\\begin{remark}",
+            "    $0",
+            "\\end{remark}"
+        ],
+        "description": "Boxed remark (unnumbered)"
+    },
+    "Note Box": {
+        "scope": "latex",
+        "prefix": "nte",
+        "body": [
+            "\\begin{note}",
+            "    $0",
+            "\\end{note}"
+        ],
+        "description": "Boxed note (unnumbered)"
+    },
+    "Warning Box": {
+        "scope": "latex",
+        "prefix": "wrn",
+        "body": [
+            "\\begin{warning}",
+            "    $0",
+            "\\end{warning}"
+        ],
+        "description": "Boxed warning (unnumbered)"
+    },
+    "Proof": {
+        "scope": "latex",
+        "prefix": "prf",
+        "body": [
+            "\\begin{proof}",
+            "    $0",
+            "\\end{proof}"
+        ],
+        "description": "Proof ending with a green square"
     }
 }

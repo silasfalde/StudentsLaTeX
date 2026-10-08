@@ -23,6 +23,27 @@
             }
         },
         {
+            "name": "subtitle",
+            "arg": {
+                "format": "{}",
+                "snippet": "subtitle{${1:subtitle}}"
+            }
+        },
+        {
+            "name": "instructor",
+            "arg": {
+                "format": "{}",
+                "snippet": "instructor{${1:instructor name}}"
+            }
+        },
+        {
+            "name": "term",
+            "arg": {
+                "format": "{}",
+                "snippet": "term{${1:term}}"
+            }
+        },
+        {
             "name": "headerlogo",
             "arg": {
                 "format": "{}",
@@ -41,6 +62,20 @@
             "arg": {
                 "format": "{}{}{}",
                 "snippet": "suggestedref{${1:name}}{${2:title or affiliation}}{${3:email}}"
+            }
+        },
+        {
+            "name": "cref",
+            "arg": {
+                "format": "{}",
+                "snippet": "cref{${1:label}}"
+            }
+        },
+        {
+            "name": "Cref",
+            "arg": {
+                "format": "{}",
+                "snippet": "Cref{${1:label}}"
             }
         },
         {
@@ -188,10 +223,71 @@
     ],
     "envs": [
         {
+            "name": "definition",
+            "arg": {
+                "format": "[]",
+                "snippet": "[${1:name}]"
+            }
+        },
+        {
+            "name": "theorem",
+            "arg": {
+                "format": "[]",
+                "snippet": "[${1:name}]"
+            }
+        },
+        {
+            "name": "lemma",
+            "arg": {
+                "format": "[]",
+                "snippet": "[${1:name}]"
+            }
+        },
+        {
+            "name": "proposition",
+            "arg": {
+                "format": "[]",
+                "snippet": "[${1:name}]"
+            }
+        },
+        {
+            "name": "corollary",
+            "arg": {
+                "format": "[]",
+                "snippet": "[${1:name}]"
+            }
+        },
+        {
+            "name": "example",
+            "arg": {
+                "format": "[]",
+                "snippet": "[${1:name}]"
+            }
+        },
+        {
+            "name": "remark"
+        },
+        {
+            "name": "note"
+        },
+        {
+            "name": "warning"
+        },
+        {
+            "name": "proof",
+            "arg": {
+                "format": "[]",
+                "snippet": "[${1:name}]"
+            }
+        },
+        {
             "name": "problem"
         },
         {
             "name": "context"
+        },
+        {
+            "name": "solution"
         },
         {
             "name": "lstlisting",
