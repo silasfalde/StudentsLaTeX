@@ -7,7 +7,7 @@
 %% styling, optional header logos, and formatted contact information.
 %% Based on the standard letter class with additional formatting features.
 %%
-%% DATE: 2024/11/16
+%% DATE: 2026/10/08
 %%
 %% ============================================================================
 %% USAGE INSTRUCTIONS:
@@ -56,7 +56,7 @@
 %% ============================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{coverletter}[2024/11/16 cover letter style]
+\ProvidesClass{coverletter}[2026/10/08 v2.0 cover letter style]
 
 %% Based on the eletter2 class
 %% https://www.overleaf.com/latex/templates/ntu-eee-letterhead/qfxzzmxfpcnq
@@ -76,8 +76,10 @@
 \RequirePackage{graphicx}
 \RequirePackage[normalem]{ulem}
 \RequirePackage{enumerate}
-\RequirePackage{hyperref}
 \RequirePackage{geometry}
+
+%%% Shared style (palette and fonts); links are loaded last
+\RequirePackage{studentstyle}
 
 %%% Define commands
 \newif\ifCL@headerlogo\CL@headerlogofalse
@@ -88,14 +90,14 @@
 \newcommand{\manuscript}[2]{%
   \smallskip%
   \begin{center}%
-    \textbf{#1}\\[\smallskipamount]
+    \textbf{\color{studentsaccent}#1}\\[\smallskipamount]
     {\small #2}
   \end{center}%
   \smallskip%
 }
 
 \newcommand{\suggestedref}[3]{%
-  \textbf{#1}, #2%
+  \textbf{\color{studentsaccent}#1}, #2%
   \begin{itemize}
     \item email: \href{mailto:#3}{\uline{#3}}
   \end{itemize}
@@ -116,6 +118,9 @@
         \@date\end{tabular}\par}%
   \fi%
   \vspace{-3\parskip}%
+  \vspace{2\parskip}%
+  {\color{studentsaccent}\rule{\textwidth}{0.6pt}\par}%
+  \vspace{0.5\parskip}%
   {\raggedright \toname \\ \toaddress \par}%
   \vspace{1\parskip}%
   #1\par\nobreak}
@@ -145,8 +150,5 @@
 \setlength{\parindent}{0mm}
 \setlength{\parskip}{5mm}
 
-%% Set up hyperref
-\hypersetup{
-  colorlinks=true,
-  urlcolor=blue,
-}
+%% Links use the shared accent colour
+\StudentsLoadLinks
