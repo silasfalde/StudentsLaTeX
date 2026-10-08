@@ -1,4 +1,9 @@
-\ProvidesClass{essay}[2024/12/25 Essay class]
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{essay}[2026/10/08 v2.0 Essay class]
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+
 \LoadClass{article}
 
 \RequirePackage{
@@ -10,38 +15,23 @@
     amsmath,
     spacingtricks,
     pdflscape,
+    titlesec,
 }
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{extreport}}
-
-\ProcessOptions\relax
+% Shared style (palette, fonts) and layout
+\RequirePackage{studentstyle}
+\RequirePackage{studentlayout}
 
 \geometry{margin=0.75in}
 
-\newcommand{\@class}{}
-\newcommand{\class}[1]{\renewcommand{\@class}{#1}}
-\newcommand{\@titlelogo}{}
-\newcommand{\titlelogo}[1]{\renewcommand{\@titlelogo}{#1}}
-
-\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\StudentsHeadings{\Large}{\large}
+\StudentsRunningHeader
 
 % Title
-\renewcommand{\maketitle}{{
-            \centering
-            \vspace*{1cm}
+\renewcommand{\maketitle}{\StudentsTitlePage}
 
-            \ifx\@titlelogo\@empty\else
-                \@titlelogo
-                \vspace{1cm}
-            \fi
+% Links load last
+\StudentsLoadLinks
+\StudentsLoadCleveref
 
-            {\Huge\bfseries \@title \par}
-            \vspace{0.5cm}
-
-            {\Large \@author \par}
-
-            \vfill
-
-            {\large\today\par}
-            \newpage
-        }}
+\endinput

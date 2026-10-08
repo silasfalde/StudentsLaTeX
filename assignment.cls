@@ -1,4 +1,5 @@
-\ProvidesClass{assignment}[2025/04/16 v1.0 Assignment class]
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{assignment}[2026/10/08 v2.0 Assignment class]
 
 \newif\if@newpages
 \DeclareOption{newpages}{\@newpagestrue}
@@ -6,77 +7,109 @@
 \DeclareOption{arabicsubsec}{\@arabicsubsectrue}
 \newif\if@arabicsubsubsec
 \DeclareOption{arabicsubsubsec}{\@arabicsubsubsectrue}
+\newif\if@nobox
+\DeclareOption{nobox}{\@noboxtrue}
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{extreport}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 
 \ProcessOptions\relax
 
 \LoadClass{article}
 
 \RequirePackage{
-  amsthm,
   amsmath,
   amssymb,
-  tcolorbox,
-  xcolor,
   geometry,
   graphicx,
   csvsimple,
   titlesec,
   enumerate,
+  enumitem,
   siunitx,
 }
 
-\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+% Shared style (palette, fonts), boxed environments, and layout
+\RequirePackage{studentstyle}
+\if@nobox
+  \RequirePackage[nobox]{studentboxes}
+\else
+  \RequirePackage{studentboxes}
+\fi
+\RequirePackage{studentlayout}
 
 % Load custom commands
-\input{math-commands}
-\input{programming-commands}
-
-% Variables
-\newcommand{\@class}{}
-\newcommand{\class}[1]{\renewcommand{\@class}{#1}}
+\InputIfFileExists{math-commands.tex}{}{%
+  \ClassWarning{assignment}{math-commands.tex not found}}
+\InputIfFileExists{programming-commands.tex}{}{%
+  \ClassWarning{assignment}{programming-commands.tex not found}}
 
 % Page layout
 \geometry{margin=1in}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.75em}
+\StudentsRunningHeader
 
 % Sections
-\titleformat{\section}[block]{\if@newpages\clearpage\fi\normalfont\Large\bfseries}{\thesection}{1em}{}
+\StudentsHeadings{\Large}{\large}
+\titleformat{\section}[block]
+  {\if@newpages\clearpage\fi\normalfont\Large\bfseries\color{studentsaccent}}
+  {\thesection}{1em}{}
 
 % Problem statements
 \newenvironment{problem}
-{\paragraph{Problem.}}
+{\paragraph{\textcolor{studentsaccent}{Problem.}}}
 {}
 \newenvironment{context}
 {\begin{problem}}
 {\end{problem}}
 \newenvironment{solution}
-{\paragraph{Solution.}}
+{\paragraph{\textcolor{studentsaccentsoft}{Solution.}}}
 {}
-
-
 
 % Subsections
 \renewcommand{\thesubsection}{\thesection.\if@arabicsubsec\arabic{subsection}\else\Alph{subsection}\fi}
-\titleformat{\subsection}[block]{\normalfont\large\bfseries}{\thesubsection)}{0.5em}{}
+\titleformat{\subsection}[block]
+  {\normalfont\large\bfseries\color{studentsaccentsoft}}
+  {\thesubsection)}{0.5em}{}
 \titlespacing{\subsection}{0pt}{0.5em plus 1em}{0em plus 1em}
 
 % Subsubsections
 \renewcommand{\thesubsubsection}{\thesubsection.\if@arabicsubsubsec\arabic{subsubsection}\else\Roman{subsubsection}\fi}
 \titleformat{\subsubsection}[block]
-{\normalfont\normalsize\bfseries\textit}{\thesubsubsection)}{1em}{}
+  {\normalfont\normalsize\bfseries\color{studentsaccentsoft}\textit}
+  {\thesubsubsection)}{1em}{}
 \titlespacing{\subsubsection}{0pt}{0em plus 1em}{0em plus 1em}
 
+% Lists
+\setlist[itemize,1]{label=\textcolor{studentsaccent}{\textbullet}}
+\setlist[itemize,2]{label=\textcolor{studentsaccent}{\textendash}}
+
 % Title
-\renewcommand{\maketitle}{
+\renewcommand{\maketitle}{%
+  \thispagestyle{studentsfirst}%
   \begin{center}
-    \LARGE\@title\vspace{1em}\\
+    {\color{studentsaccent}\rule{\textwidth}{0.8pt}\par}
+    \vspace{0.8em}
     \ifx\@class\@empty\else
-      \Large\@class\vspace{1em}\\
+      {\large\scshape\color{studentsaccent}\@class\par}
+      \vspace{0.4em}
     \fi
-    \normalsize\@author\vspace{1em}\\
-    \normalsize\today
+    {\LARGE\bfseries\@title\par}
+    \ifx\@subtitle\@empty\else
+      \vspace{0.3em}
+      {\large\itshape\@subtitle\par}
+    \fi
+    \vspace{0.8em}
+    {\normalsize\@author\par}
+    \vspace{0.2em}
+    {\normalsize\@date\par}
+    \vspace{0.8em}
+    {\color{studentsaccent}\rule{\textwidth}{0.8pt}\par}
   \end{center}
 }
+
+% Links load last
+\StudentsLoadLinks
+\StudentsLoadCleveref
+
+\endinput
