@@ -52,8 +52,22 @@
 % Sections
 \StudentsHeadings{\Large}{\large}
 \titleformat{\section}[block]
-  {\if@newpages\clearpage\fi\normalfont\Large\bfseries\color{studentsaccent}}
+  {\normalfont\Large\bfseries\color{studentsaccent}}
   {\thesection}{1em}{}
+
+% With newpages, each section starts a new page; the title and table of
+% contents share the first page, and a first section directly after the
+% title stays on that page.
+\newif\if@tocshown
+\let\students@origtoc\tableofcontents
+\renewcommand{\tableofcontents}{%
+  \begingroup\let\sectionbreak\relax\students@origtoc\endgroup
+  \global\@tocshowntrue}
+\if@newpages
+  \newcommand{\sectionbreak}{%
+    \ifnum\value{section}>0 \clearpage
+    \else\if@tocshown\clearpage\fi\fi}
+\fi
 
 % Problem statements
 \newenvironment{problem}
