@@ -52,8 +52,8 @@
 % Sections
 \StudentsHeadings{\Large}{\large}
 \titleformat{\section}[block]
-  {\normalfont\Large\bfseries\color{studentsaccent}}
-  {\thesection}{1em}{}
+{\normalfont\Large\bfseries\color{studentsaccent}}
+{\thesection}{1em}{}
 
 % With newpages, each section starts a new page; the title and table of
 % contents share the first page, and a first section directly after the
@@ -72,26 +72,26 @@
 % Problem statements
 \newenvironment{problem}
 {\paragraph{\textcolor{studentsaccent}{Problem.}}}
-{}
+{\par}
 \newenvironment{context}
 {\begin{problem}}
 {\end{problem}}
 \newenvironment{solution}
 {\paragraph{\textcolor{studentsaccentsoft}{Solution.}}}
-{}
+{\par}
 
 % Subsections
 \renewcommand{\thesubsection}{\thesection.\if@arabicsubsec\arabic{subsection}\else\Alph{subsection}\fi}
 \titleformat{\subsection}[block]
-  {\normalfont\large\bfseries\color{studentsaccentsoft}}
-  {\thesubsection)}{0.5em}{}
+{\normalfont\large\bfseries\color{studentsaccentsoft}}
+{\thesubsection)}{0.5em}{}
 \titlespacing{\subsection}{0pt}{0.5em plus 1em}{0em plus 1em}
 
 % Subsubsections
 \renewcommand{\thesubsubsection}{\thesubsection.\if@arabicsubsubsec\arabic{subsubsection}\else\Roman{subsubsection}\fi}
 \titleformat{\subsubsection}[block]
-  {\normalfont\normalsize\bfseries\color{studentsaccentsoft}\textit}
-  {\thesubsubsection)}{1em}{}
+{\normalfont\normalsize\bfseries\color{studentsaccentsoft}\textit}
+{\thesubsubsection)}{1em}{}
 \titlespacing{\subsubsection}{0pt}{0em plus 1em}{0em plus 1em}
 
 % Lists
