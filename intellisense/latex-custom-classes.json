@@ -130,19 +130,19 @@
             "name": "betadist"
         },
         {
-            "name": "exp"
-        },
-        {
-            "name": "ln"
-        },
-        {
-            "name": "mse"
-        },
-        {
-            "name": "mle"
-        },
-        {
             "name": "sign"
+        },
+        {
+            "name": "loss"
+        },
+        {
+            "name": "risk"
+        },
+        {
+            "name": "sumSquared"
+        },
+        {
+            "name": "meanSquared"
         },
         {
             "name": "Loss"
@@ -151,10 +151,10 @@
             "name": "Risk"
         },
         {
-            "name": "RSS"
+            "name": "SumSquared"
         },
         {
-            "name": "SSreg"
+            "name": "MeanSquared"
         },
         {
             "name": "floor",
@@ -186,6 +186,9 @@
                 "format": "{}",
                 "snippet": "norm{${1:expression}}"
             }
+        },
+        {
+            "name": "bigO"
         },
         {
             "name": "BigO"

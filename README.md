@@ -502,19 +502,24 @@ These files are automatically loaded by `assignment`, `notes`, and
 Provides short commands for common notation:
 
 - Calculus: `\diff`
-- Probability and statistics: `\prob`, `\expectation`, `\variance`,
-  `\stddev`, `\covariance`, `\pdf`, `\cdf`, `\mse`, and `\mle`
+- Probability and statistics: `\prob`, `\stddev`, `\expect`, `\variance`,
+  `\entropy`, `\infoGain`, `\pdf`, `\cdf`, `\covariance`, `\sign`, `\loss`,
+  `\risk`, `\sumSquared`, and `\meanSquared`
 - Distributions: `\binomialdist`, `\bernoullidist`, `\normaldist`,
   `\gammadist`, `\poissondist`, `\uniformdist`, and `\betadist`
 - Discrete mathematics: `\floor{...}`, `\ceil{...}`, `\norm{...}`,
-  `\magnitude{...}`, `\BigO`, `\argmax`, `\softmax`, `\reward`, and
+  `\magnitude{...}`, `\bigO`, `\argmax`, `\softmax`, `\reward`, and
   `\utility`
-- Regression: `\RSS` and `\SSreg`
+
+The paired delimiters `\floor`, `\ceil`, `\norm`, and `\magnitude` accept
+the starred form for automatic sizing, such as `\norm*{\frac{x}{y}}`.
+The former capitalized names `\Loss`, `\Risk`, `\SumSquared`, `\MeanSquared`,
+and `\BigO` remain as aliases.
 
 For example:
 
 ```latex
-$\expectation[X]$, $\variance(X)$, and $\floor{x}$
+$\expect[X]$, $\variance(X)$, and $\floor{x}$
 ```
 
 ### `programming-commands.tex`

@@ -1,16 +1,18 @@
-% Calculus
-\providecommand{\diff}{\hspace{1pt}\mathrm{d}}
+\RequirePackage{mathtools}
 
-% Probability
-\providecommand{\prob}{\mathrm{P}}
-\providecommand{\stddev}{\mathrm{SD}}
-\providecommand{\expect}{\mathbb{E}}
-\providecommand{\variance}{\mathrm{Var}}
-\providecommand{\entropy}{\mathrm{H}}
-\providecommand{\infoGain}{\mathrm{IG}}
-\providecommand{\pdf}{\mathrm{PDF}}
-\providecommand{\cdf}{\mathrm{CDF}}
-\providecommand{\covariance}{\mathrm{Cov}}
+% Calculus
+\providecommand{\diff}{\mathop{}\!\mathrm{d}}
+
+% Probability + Statistics
+\DeclareMathOperator{\prob}{P}
+\DeclareMathOperator{\stddev}{SD}
+\DeclareMathOperator{\expect}{\mathbb{E}}
+\DeclareMathOperator{\variance}{Var}
+\DeclareMathOperator{\entropy}{H}
+\DeclareMathOperator{\infoGain}{IG}
+\DeclareMathOperator{\pdf}{PDF}
+\DeclareMathOperator{\cdf}{CDF}
+\DeclareMathOperator{\covariance}{Cov}
 \providecommand{\binomialdist}{\mathrm{Bin}}
 \providecommand{\bernoullidist}{\mathrm{Bernoulli}}
 \providecommand{\normaldist}{\mathcal{N}}
@@ -18,25 +20,24 @@
 \providecommand{\poissondist}{\mathrm{Poisson}}
 \providecommand{\uniformdist}{\mathrm{U}}
 \providecommand{\betadist}{\mathrm{Beta}}
-\renewcommand{\exp}{\mathrm{exp}}
-\renewcommand{\ln}{\mathrm{ln}}
-\providecommand{\mse}{\mathrm{MSE}}
-\providecommand{\mle}{\mathrm{MLE}}
-\providecommand{\sign}{\mathrm{sign}}
-\providecommand{\Loss}{\mathrm{Loss}}
-\providecommand{\Risk}{\mathrm{Risk}}
-
-% Regression
-\providecommand{\RSS}{\text{RSS}}
-\providecommand{\SSreg}{\text{SSreg}}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\loss}{Loss}
+\DeclareMathOperator{\risk}{Risk}
+\DeclareMathOperator{\sumSquared}{SS}
+\DeclareMathOperator{\meanSquared}{MS}
+\providecommand{\Loss}{\loss}
+\providecommand{\Risk}{\risk}
+\providecommand{\SumSquared}{\sumSquared}
+\providecommand{\MeanSquared}{\meanSquared}
 
 % Discrete math
-\providecommand{\floor}[1]{\left\lfloor\ #1 \right\rfloor}
-\providecommand{\ceil}[1]{\left\lceil\ #1 \right\rceil}
-\providecommand{\softmax}{{\mathrm{softmax}}}
-\providecommand{\magnitude}[1]{\left\lvert#1\right\rvert}
-\providecommand{\norm}[1]{\|#1\|}
-\providecommand{\BigO}{{\mathrm{O}}}
-\providecommand{\argmax}{{\mathrm{argmax}}}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclareMathOperator{\softmax}{softmax}
+\DeclarePairedDelimiter{\magnitude}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclareMathOperator{\bigO}{O}
+\providecommand{\BigO}{\bigO}
+\DeclareMathOperator{\argmax}{argmax}
 \providecommand{\reward}{{\mathrm{R}}}
 \providecommand{\utility}{{\mathrm{U}}}
