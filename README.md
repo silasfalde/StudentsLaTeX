@@ -242,18 +242,23 @@ The solution goes here.
   subsection labels use capital letters, such as `1.A`.
 - `arabicsubsubsec`: number subsubsections with Arabic numerals. Without it,
   subsubsection labels use uppercase Roman numerals.
-- `nobox`: draw the theorem-style environments as plain headed paragraphs.
+- `nobox`: leave section headings, problem statements, and theorem-style
+  environments unboxed.
 
 The class also accepts options supported by the underlying article class.
 
 ### Problem statements
 
-The optional `problem` environment places an unnumbered statement under a
-green "Problem." label. The optional `solution` environment adds a lighter
-green "Solution." label. Neither uses a box, so lists, tables, and page breaks
-work freely:
+The optional `problem` environment places an unnumbered, unlabeled statement
+in a breakable light-grey box with a black left rule. Section, subsection, and
+subsubsection headings use a slightly darker grey background and the same
+rule. When a `problem` or `context` immediately follows one of these headings,
+the boxes connect; headings followed by other content remain separate. Use the
+`nobox` option to leave headings and problem statements unboxed. The optional
+`solution` environment contains unlabeled, unboxed solution text:
 
 ```latex
+\section{A Problem Title}
 \begin{problem}
 What are the possible values of $Z$? What is the probability of each value?
 \end{problem}
@@ -261,6 +266,9 @@ What are the possible values of $Z$? What is the probability of each value?
 Here is the solution.
 \end{solution}
 ```
+
+Lists and non-floating tables can be used inside a problem box; place floating
+figures and tables outside it.
 
 `context` is an equivalent alias for `problem` when the introductory material
 is better described as context:

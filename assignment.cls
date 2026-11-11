@@ -55,6 +55,31 @@
 {\normalfont\Large\bfseries\color{studentsaccent}}
 {\thesection}{1em}{}
 
+\newif\ifstudents@headingpending
+\if@nobox\else
+  \AddToHook{para/begin}{\global\students@headingpendingfalse}
+  \newcommand{\students@headingbox}[2]{%
+    \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \sbox{\@tempboxa}{\colorbox{black!10}{%
+      \parbox{\dimexpr\linewidth-2.5pt\relax}{%
+        \vspace{0.5em}%
+        \hspace*{0.8em}%
+        \parbox{\dimexpr\linewidth-1.6em\relax}{#1#2}%
+        \vspace{0.5em}%
+      }%
+    }}%
+    \textcolor{black}{\vrule width 2.5pt height \ht\@tempboxa depth \dp\@tempboxa}%
+    \usebox{\@tempboxa}%
+    \endgroup
+  }
+  \titleformat{\section}[block]
+    {\normalfont\Large\bfseries\color{studentsaccent}}
+    {}{0pt}{\students@headingbox{\ifttl@label\thesection\hspace{1em}\fi}}
+    [\global\students@headingpendingtrue]
+  \titlespacing{\section}{0pt}{3.5ex plus 1ex minus .2ex}{0.6em}
+\fi
+
 % With newpages, each section starts a new page; the title and table of
 % contents share the first page, and a first section directly after the
 % title stays on that page.
@@ -71,13 +96,24 @@
 
 % Problem statements
 \newenvironment{problem}
-{\paragraph{\textcolor{studentsaccent}{Problem.}}}
+{\par\ignorespaces}
 {\par}
+\if@nobox\else
+  \students@box{problem}{black}{black!5}
+  \AddToHook{env/problem/before}[students]{%
+    \ifstudents@headingpending
+      % Cancel the spacing and overlap slightly to avoid a visible seam.
+      \if@nobreak\vspace{\dimexpr-0.6em-\parskip-\lineskip-0.5pt\relax}\fi
+    \fi
+    \global\students@headingpendingfalse
+  }
+  \DeclareHookRule{env/problem/before}{students}{before}{tcolorbox}
+\fi
 \newenvironment{context}
 {\begin{problem}}
 {\end{problem}}
 \newenvironment{solution}
-{\paragraph{\textcolor{studentsaccentsoft}{Solution.}}}
+{\par\ignorespaces}
 {\par}
 
 % Subsections
@@ -93,6 +129,19 @@
 {\normalfont\normalsize\bfseries\color{studentsaccentsoft}\textit}
 {\thesubsubsection)}{1em}{}
 \titlespacing{\subsubsection}{0pt}{0em plus 1em}{0em plus 1em}
+
+\if@nobox\else
+  \titleformat{\subsection}[block]
+    {\normalfont\large\bfseries\color{studentsaccentsoft}}
+    {}{0pt}{\students@headingbox{\ifttl@label\thesubsection)\hspace{0.5em}\fi}}
+    [\global\students@headingpendingtrue]
+  \titlespacing{\subsection}{0pt}{0.5em plus 1em}{0.6em}
+  \titleformat{\subsubsection}[block]
+    {\normalfont\normalsize\bfseries\color{studentsaccentsoft}\itshape}
+    {}{0pt}{\students@headingbox{\ifttl@label\thesubsubsection)\hspace{1em}\fi}}
+    [\global\students@headingpendingtrue]
+  \titlespacing{\subsubsection}{0pt}{0em plus 1em}{0.6em}
+\fi
 
 % Lists
 \setlist[itemize,1]{label=\textcolor{studentsaccent}{\textbullet}}
