@@ -42,6 +42,10 @@
 
 \RequirePackage{studentlayout}
 
+% Math commands and programming utilities
+% math-commands.tex: \expect, \variance, \cov, \sse, \mse, \mst, \contrast, \effect,
+%                     distribution notations (\normal, \binomial, etc.), \floor, \ceil, etc.
+% programming-commands.tex: listings environment with mystyle, language=pseudo
 \InputIfFileExists{math-commands.tex}{}{%
   \ClassWarning{notes}{math-commands.tex not found}}
 \InputIfFileExists{programming-commands.tex}{}{%
