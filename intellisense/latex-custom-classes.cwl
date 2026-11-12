@@ -46,18 +46,18 @@
 \prob
 \stddev
 \expect
-\variance
+\var
 \entropy
 \infoGain
 \pdf
 \cdf
-\covariance
-\binomialdist
-\bernoullidist
-\normaldist
+\cov
+\binomial
+\bernoulli
+\normal
 \gammadist
-\poissondist
-\uniformdist
+\poisson
+\uniform
 \betadist
 \sign
 \loss
@@ -78,6 +78,7 @@
 \argmax
 \reward
 \utility
+\given
 
 # Programming listings
 \begin{lstlisting}[options]

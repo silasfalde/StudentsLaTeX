@@ -91,7 +91,7 @@
             "name": "expect"
         },
         {
-            "name": "variance"
+            "name": "var"
         },
         {
             "name": "entropy"
@@ -106,25 +106,25 @@
             "name": "cdf"
         },
         {
-            "name": "covariance"
+            "name": "cov"
         },
         {
-            "name": "binomialdist"
+            "name": "binomial"
         },
         {
-            "name": "bernoullidist"
+            "name": "bernoulli"
         },
         {
-            "name": "normaldist"
+            "name": "normal"
         },
         {
             "name": "gammadist"
         },
         {
-            "name": "poissondist"
+            "name": "poisson"
         },
         {
-            "name": "uniformdist"
+            "name": "uniform"
         },
         {
             "name": "betadist"
@@ -201,6 +201,9 @@
         },
         {
             "name": "utility"
+        },
+        {
+            "name": "given"
         },
         {
             "name": "lstset",
